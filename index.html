@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>致谢青竹 · 见字如晤 · A Letter For You</title>
+<title id="pageTitle">致谢青竹 · 见字如晤 · A Letter For You</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -136,22 +136,25 @@
   }
   .stamp-box:hover { transform: scale(1.08) rotate(3deg); }
   .top-site-title {
-    font-family: var(--font-en-display); font-size: 11.5px; letter-spacing: 0.38em;
+    font-family: var(--font-en-display); font-size: 12px; letter-spacing: 0.35em;
     text-transform: uppercase; color: var(--ink-soft); font-weight: 600;
+    transition: opacity 0.3s ease;
   }
 
   .top-controls {
-    display: flex; align-items: center; gap: 12px;
+    display: flex; align-items: center; gap: 10px;
   }
   .icon-btn {
     background: rgba(255, 255, 255, 0.14);
     border: 1px solid var(--paper-border);
     backdrop-filter: blur(10px);
     color: var(--ink-soft);
-    width: 38px; height: 38px; border-radius: 50%;
+    height: 38px; min-width: 38px; border-radius: 19px;
+    padding: 0 10px;
     display: flex; align-items: center; justify-content: center;
     cursor: pointer; transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-    font-size: 15px; position: relative;
+    font-size: 14.5px; position: relative;
+    font-family: var(--font-en-display); font-weight: 600;
   }
   .icon-btn:hover {
     color: var(--ink); border-color: var(--gold);
@@ -176,6 +179,7 @@
     opacity: 0; transform: translateY(-4px);
     transition: opacity 0.25s ease, transform 0.25s ease;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
+    z-index: 20;
   }
   .icon-btn:hover .tooltip { opacity: 1; transform: translateY(0); }
 
@@ -183,10 +187,10 @@
   .poetic-ribbon {
     position: fixed; left: 50%; transform: translateX(-50%);
     z-index: 6; text-align: center; pointer-events: none;
-    width: 90%; max-width: 750px;
+    width: 90%; max-width: 780px;
   }
-  #phraseTop { top: 12vh; }
-  #phraseBottom { bottom: 9.5vh; }
+  #phraseTop { top: 11vh; }
+  #phraseBottom { bottom: 9vh; }
 
   .phrase-card {
     position: relative; opacity: 0; transform: translateY(14px) scale(0.98);
@@ -197,15 +201,20 @@
   }
   .phrase-en {
     font-family: var(--font-en-display); font-size: clamp(13px, 1.4vw, 17px);
-    letter-spacing: 0.42em; text-transform: uppercase; color: var(--gold);
+    letter-spacing: 0.38em; text-transform: uppercase; color: var(--gold);
     margin-bottom: 6px; font-weight: 600;
     text-shadow: 0 1px 12px var(--gold-glow);
   }
   .phrase-zh {
     font-family: var(--font-zh); font-weight: 300;
-    font-size: clamp(23px, 3vw, 38px); letter-spacing: 0.38em;
-    color: var(--ink); padding-left: 0.38em;
+    font-size: clamp(21px, 2.7vw, 35px); letter-spacing: 0.3em;
+    color: var(--ink); padding-left: 0.3em;
     text-shadow: 0 2px 22px rgba(0, 0, 0, 0.08);
+  }
+  html[lang="en"] .phrase-zh {
+    font-family: var(--font-serif); font-style: italic;
+    font-size: clamp(19px, 2.3vw, 29px); letter-spacing: 0.12em;
+    padding-left: 0;
   }
   .phrase-line {
     width: 52px; height: 1.5px;
@@ -267,6 +276,9 @@
   .letter-peek-title {
     font-family: var(--font-zh); font-size: 14.5px; color: var(--vermilion);
     letter-spacing: 0.28em; margin-bottom: 8px; font-weight: 500;
+  }
+  html[lang="en"] .letter-peek-title {
+    font-family: var(--font-en-display); letter-spacing: 0.18em; font-size: 13.5px;
   }
   .envelope-scene:hover .letter-peek {
     transform: translateY(-18px);
@@ -361,7 +373,7 @@
   .letter-modal {
     position: fixed; top: 50%; left: 50%;
     transform: translate(-50%, -46%) scale(0.92);
-    width: min(690px, 92vw); max-height: min(84vh, 760px);
+    width: min(700px, 92vw); max-height: min(84vh, 780px);
     background: var(--paper-card);
     border: 1px solid var(--paper-border);
     border-radius: 8px;
@@ -395,14 +407,17 @@
     position: relative;
   }
   .modal-tabs {
-    display: flex; gap: 8px;
+    display: flex; gap: 8px; flex-wrap: wrap;
   }
   .tab-btn {
     background: none; border: 1px solid transparent;
     padding: 6px 15px; border-radius: 20px;
     font-family: var(--font-zh); font-size: 13.5px;
-    letter-spacing: 0.15em; color: var(--ink-soft);
+    letter-spacing: 0.12em; color: var(--ink-soft);
     cursor: pointer; transition: all 0.3s ease;
+  }
+  html[lang="en"] .tab-btn {
+    font-family: var(--font-en-display); font-size: 12px; letter-spacing: 0.1em;
   }
   .tab-btn:hover {
     color: var(--ink); border-color: var(--paper-border);
@@ -427,7 +442,7 @@
 
   /* Modal Content Body */
   .modal-scroll-area {
-    padding: 30px 40px 26px;
+    padding: 30px 42px 28px;
     overflow-y: auto; scrollbar-width: thin;
     scrollbar-color: var(--paper-border) transparent;
     position: relative;
@@ -454,9 +469,12 @@
   }
   .letter-recipient {
     font-family: var(--font-zh); font-weight: 700;
-    font-size: 27px; letter-spacing: 0.3em;
+    font-size: 27px; letter-spacing: 0.28em;
     color: var(--ink); margin-bottom: 6px;
     display: flex; align-items: center; justify-content: center; gap: 12px;
+  }
+  html[lang="en"] .letter-recipient {
+    font-family: var(--font-en-display); letter-spacing: 0.16em; font-size: 24px;
   }
   .recipient-seal {
     font-family: var(--font-calligraphy); font-size: 15px;
@@ -464,13 +482,22 @@
     padding: 2px 7px; border-radius: 3px;
     letter-spacing: 0.1em;
   }
+  html[lang="en"] .recipient-seal {
+    font-family: var(--font-en-display); font-size: 11px; letter-spacing: 0.15em;
+  }
   .letter-sub-greeting {
-    font-family: var(--font-zh); font-size: 15.5px; letter-spacing: 0.28em;
+    font-family: var(--font-zh); font-size: 15px; letter-spacing: 0.24em;
     color: var(--gold); font-weight: 400;
+  }
+  html[lang="en"] .letter-sub-greeting {
+    font-family: var(--font-serif); font-style: italic; letter-spacing: 0.1em; font-size: 16px;
   }
   .letter-body {
     font-size: 16.5px; line-height: 1.95; color: var(--ink);
     text-align: justify; text-justify: inter-ideograph;
+  }
+  html[lang="en"] .letter-body {
+    font-size: 17px; line-height: 1.85; letter-spacing: 0.015em;
   }
   .letter-body p { margin-bottom: 18px; }
   .quote-highlight {
@@ -481,10 +508,16 @@
   }
   .quote-highlight .zh-quote {
     font-family: var(--font-zh); font-size: 18.5px; font-weight: 500;
-    color: var(--vermilion); letter-spacing: 0.18em; margin-bottom: 4px;
+    color: var(--vermilion); letter-spacing: 0.16em; margin-bottom: 4px;
+  }
+  html[lang="en"] .quote-highlight .zh-quote {
+    font-family: var(--font-serif); font-style: italic; font-size: 17.5px; letter-spacing: 0.02em;
   }
   .quote-highlight .en-subquote {
     font-style: italic; color: var(--ink-soft); font-size: 14.5px;
+  }
+  html[lang="en"] .quote-highlight .en-subquote {
+    font-family: var(--font-zh); font-style: normal; font-size: 15px; letter-spacing: 0.12em;
   }
 
   .letter-sign-off {
@@ -511,17 +544,23 @@
     transform: translateX(4px); border-color: var(--gold);
   }
   .verse-source {
-    font-size: 12px; letter-spacing: 0.25em; color: var(--gold);
+    font-size: 12px; letter-spacing: 0.22em; color: var(--gold);
     text-transform: uppercase; font-family: var(--font-en-display); margin-bottom: 6px;
     font-weight: 600;
   }
   .verse-chinese {
     font-family: var(--font-zh); font-size: 18px; font-weight: 500;
-    letter-spacing: 0.18em; color: var(--ink); margin-bottom: 8px;
+    letter-spacing: 0.16em; color: var(--ink); margin-bottom: 8px;
+  }
+  html[lang="en"] .verse-chinese {
+    font-family: var(--font-serif); font-style: italic; font-size: 17.5px; letter-spacing: 0.03em;
   }
   .verse-english {
     font-size: 14.5px; color: var(--ink-soft); font-style: italic;
     line-height: 1.6;
+  }
+  html[lang="en"] .verse-english {
+    font-family: var(--font-zh); font-style: normal; font-size: 14.5px; letter-spacing: 0.08em;
   }
 
   /* Keepsake / Interactive Tab */
@@ -537,8 +576,11 @@
   }
   .keepsake-main-text {
     font-family: var(--font-zh); font-size: 21px; color: var(--ink);
-    letter-spacing: 0.2em; font-weight: 500; margin-bottom: 8px;
+    letter-spacing: 0.18em; font-weight: 500; margin-bottom: 8px;
     transition: opacity 0.25s ease;
+  }
+  html[lang="en"] .keepsake-main-text {
+    font-family: var(--font-serif); font-style: italic; font-size: 19px; letter-spacing: 0.04em;
   }
   .keepsake-sub-text {
     font-style: italic; color: var(--ink-soft); font-size: 15px;
@@ -554,6 +596,9 @@
     letter-spacing: 0.15em; cursor: pointer; transition: all 0.3s ease;
     box-shadow: 0 4px 14px var(--gold-glow);
     display: flex; align-items: center; gap: 8px;
+  }
+  html[lang="en"] .action-btn {
+    font-family: var(--font-en-display); font-size: 12px; letter-spacing: 0.12em;
   }
   .action-btn:hover {
     transform: translateY(-2px);
@@ -577,6 +622,9 @@
     z-index: 100; opacity: 0; pointer-events: none;
     transition: all 0.35s cubic-bezier(0.2, 0.8, 0.3, 1);
   }
+  html[lang="en"] .toast {
+    font-family: var(--font-en-display); font-size: 12px; letter-spacing: 0.08em;
+  }
   .toast.show {
     opacity: 1; transform: translateX(-50%) translateY(0);
   }
@@ -584,9 +632,12 @@
   /* Bottom Corners Decors */
   .bottom-info-pill {
     position: fixed; bottom: 22px; left: 30px; z-index: 10;
-    font-size: 12px; letter-spacing: 0.25em; color: var(--ink-faint);
+    font-size: 12px; letter-spacing: 0.22em; color: var(--ink-faint);
     font-family: var(--font-zh); pointer-events: none;
     display: flex; align-items: center; gap: 8px;
+  }
+  html[lang="en"] .bottom-info-pill {
+    font-family: var(--font-en-display); font-size: 11px; letter-spacing: 0.16em;
   }
   .bottom-right-seal {
     position: fixed; bottom: 22px; right: 30px; z-index: 10;
@@ -603,8 +654,8 @@
     .modal-scroll-area { padding: 22px 20px 20px; }
     .modal-header { padding: 16px 18px 10px; }
     .envelope-3d { width: 88vw; height: 224px; }
-    .phrase-zh { font-size: 22px; }
-    .letter-recipient { font-size: 23px; }
+    .phrase-zh { font-size: 21px; }
+    .letter-recipient { font-size: 22px; }
   }
 </style>
 </head>
@@ -619,18 +670,25 @@
 <!-- Top Control Bar -->
 <header class="top-bar">
   <div class="top-left-seal">
-    <div class="stamp-box" title="青竹">竹</div>
-    <div class="top-site-title">致 · 谢青竹</div>
+    <div class="stamp-box" id="cornerStampLeft" title="青竹">竹</div>
+    <div class="top-site-title" id="siteTitle">致 · 谢青竹</div>
   </div>
 
   <div class="top-controls">
+    <!-- Language Switcher Button -->
+    <button class="icon-btn" id="langToggle" aria-label="Switch Language">
+      <span id="langText">EN</span>
+      <div class="tooltip" id="langTooltip">Switch to English</div>
+    </button>
+    <!-- Audio Melody Toggle -->
     <button class="icon-btn" id="audioToggle" aria-label="Toggle Melody">
       <span id="audioIcon">🎵</span>
       <div class="tooltip" id="audioTooltip">清音 · Ambient Harp</div>
     </button>
+    <!-- Day/Night Theme Toggle -->
     <button class="icon-btn" id="themeToggle" aria-label="Toggle Theme">
       <span id="themeIcon">☀️</span>
-      <div class="tooltip">素笺 / 月夜 (Day / Night)</div>
+      <div class="tooltip" id="themeTooltip">素笺 / 月夜 (Day / Night)</div>
     </button>
   </div>
 </header>
@@ -652,7 +710,7 @@
         <div class="env-inside-pattern"></div>
       </div>
       <div class="letter-peek">
-        <div class="letter-peek-title">致 · 谢青竹</div>
+        <div class="letter-peek-title" id="peekTitle">致 · 谢青竹</div>
         <div class="letter-peek-stripes"></div>
         <div class="letter-peek-stripes" style="width: 60%;"></div>
         <div class="letter-peek-stripes" style="width: 45%;"></div>
@@ -667,7 +725,7 @@
     </div>
     <div class="envelope-hint">
       <span class="hint-icon">✦</span>
-      <span>启封信笺 · Open Letter</span>
+      <span id="envHintText">启封信笺 · Open Letter</span>
       <span class="hint-icon">✦</span>
     </div>
   </div>
@@ -683,10 +741,10 @@
 
 <!-- Bottom Status / Corners -->
 <div class="bottom-info-pill">
-  <span>✦ 挥毫拂风 · 触屏绽花</span>
+  <span id="bottomHintText">✦ 挥毫拂风 · 触屏绽花</span>
 </div>
 <div class="bottom-right-seal">
-  <div class="stamp-box" style="width: 36px; height: 36px; font-size: 18px;" title="长情">情</div>
+  <div class="stamp-box" style="width: 36px; height: 36px; font-size: 18px;" id="cornerStampRight" title="长情">情</div>
 </div>
 
 <!-- Expanded Reading Modal -->
@@ -695,9 +753,9 @@
   <div class="modal-ribbon"></div>
   <div class="modal-header">
     <div class="modal-tabs">
-      <button class="tab-btn active" data-tab="letter">情笺 · The Letter</button>
-      <button class="tab-btn" data-tab="verses">诗韵 · Verses</button>
-      <button class="tab-btn" data-tab="keepsake">心语 · Keepsake</button>
+      <button class="tab-btn active" data-tab="letter" id="tabBtnLetter">情笺 · The Letter</button>
+      <button class="tab-btn" data-tab="verses" id="tabBtnVerses">诗韵 · Verses</button>
+      <button class="tab-btn" data-tab="keepsake" id="tabBtnKeepsake">心语 · Keepsake</button>
     </div>
     <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close Letter">×</button>
   </div>
@@ -707,57 +765,26 @@
     <div class="tab-page active" id="tab-letter">
       <div class="letter-salutation-wrap">
         <div class="letter-recipient">
-          <span>致 · 谢青竹</span>
-          <span class="recipient-seal">青竹亲启</span>
+          <span id="recipientName">致 · 谢青竹</span>
+          <span class="recipient-seal" id="recipientSeal">青竹亲启</span>
         </div>
-        <div class="letter-sub-greeting">见字如晤 · 顺遂无虞</div>
+        <div class="letter-sub-greeting" id="subGreeting">见字如晤 · 顺遂无虞</div>
       </div>
 
-      <div class="letter-body">
-        <p>山川辽阔，风月无边。有些心绪深重细腻，寻常言语总嫌浅薄，于是我让漫天纷飞的落花代为诉说——它们一瓣一瓣悠悠飘落，正如我对你的思念，不曾有过停歇。</p>
-
-        <div class="quote-highlight">
-          <div class="zh-quote">山有木兮木有枝，心悦君兮君可知。</div>
-          <div class="en-subquote">Trees have branches and mountains have trees; my heart longs for you, did you know?</div>
-        </div>
-
-        <p>你是清晨那一抹温柔静谧的晨曦，是我每个寻常日子里最不由自主的微笑。如果可以，我想在漫天每一片青竹与飞花上，都写满你的名字。</p>
-
-        <div class="quote-highlight">
-          <div class="zh-quote">往后余生，风雪是你，平淡是你，目光所至，皆是你。</div>
-          <div class="en-subquote">For all the days to come, in storms and gentle peace, wherever my gaze turns, there you are.</div>
-        </div>
-
-        <p>愿你岁岁常欢愉，万事皆胜意。不论晨昏与四季，情深长留，初心未负。</p>
+      <div class="letter-body" id="letterBodyContent">
+        <!-- Injected via JavaScript based on active language -->
       </div>
 
       <div class="letter-sign-off">
-        <div class="sign-english">Forever & always yours,</div>
-        <div class="sign-calligraphy">念你之人</div>
+        <div class="sign-english" id="signClosing">Forever & always yours,</div>
+        <div class="sign-calligraphy" id="signName">念你之人</div>
       </div>
     </div>
 
     <!-- Tab 2: Classic Verses Collection -->
     <div class="tab-page" id="tab-verses">
-      <div class="verse-card">
-        <div class="verse-source">《诗经·邶风·击鼓》</div>
-        <div class="verse-chinese">死生契阔，与子成说。执子之手，与子偕老。</div>
-        <div class="verse-english">"In life and death, we pledged our vows; I hold your hand, and grow old with you."</div>
-      </div>
-      <div class="verse-card">
-        <div class="verse-source">元稹 · 《离思五首·其四》</div>
-        <div class="verse-chinese">曾经沧海难为水，除却巫山不是云。</div>
-        <div class="verse-english">"Having seen the vast ocean, no other water can compare; having beheld the clouds of Mount Wu, no other mist is true cloud."</div>
-      </div>
-      <div class="verse-card">
-        <div class="verse-source">纳兰性德 · 《浣溪沙》</div>
-        <div class="verse-chinese">赌书消得泼茶香，当时只道是寻常。</div>
-        <div class="verse-english">"Contesting verses till spilled tea perfumed the quiet room; what once seemed ordinary now glows timeless in my memory."</div>
-      </div>
-      <div class="verse-card">
-        <div class="verse-source">仓央嘉措 · 《情诗》</div>
-        <div class="verse-chinese">世间安得双全法，不负如来不负卿。</div>
-        <div class="verse-english">"Could there exist in this realm a sacred path that fulfills both the heavens and my devotion to you."</div>
+      <div id="versesContainer">
+        <!-- Injected via JavaScript based on active language -->
       </div>
     </div>
 
@@ -771,11 +798,11 @@
         <div class="keepsake-actions">
           <button class="action-btn" id="nextQuoteBtn">
             <span>🌸</span>
-            <span>抽取心动誓言</span>
+            <span id="drawQuoteBtnText">抽取心动誓言</span>
           </button>
           <button class="action-btn secondary" id="copyLetterBtn">
             <span>📋</span>
-            <span>复制信笺全文</span>
+            <span id="copyLetterBtnText">复制信笺全文</span>
           </button>
         </div>
       </div>
@@ -787,7 +814,236 @@
 
 <script>
 /* =========================================================
-   1. HIGH-PRECISION 3D FLOWER & BAMBOO CANVAS ENGINE
+   1. BILINGUAL CONTENT DICTIONARY (CHINESE & ENGLISH)
+   ========================================================= */
+const I18N = {
+  zh: {
+    pageTitle: '致谢青竹 · 见字如晤 · A Letter For You',
+    siteTitle: '致 · 谢青竹',
+    peekTitle: '致 · 谢青竹',
+    envHint: '启封信笺 · Open Letter',
+    bottomHint: '✦ 挥毫拂风 · 触屏绽花',
+    langText: 'EN',
+    langTooltip: 'Switch to English (切换至英文)',
+    audioNormal: '清音 · Ambient Harp',
+    audioPlaying: '音乐播放中 · Playing',
+    audioMuted: '开启音律 · Play Sound',
+    themeTooltip: '素笺 / 月夜 (Day / Night)',
+    tabLetter: '情笺 · The Letter',
+    tabVerses: '诗韵 · Verses',
+    tabKeepsake: '心语 · Keepsake',
+    recipientName: '致 · 谢青竹',
+    recipientSeal: '青竹亲启',
+    subGreeting: '见字如晤 · 顺遂无虞',
+    signClosing: 'Forever & always yours,',
+    signName: '念你之人',
+    drawBtn: '抽取心动誓言',
+    copyBtn: '复制信笺全文',
+    toastCopied: '✨ 已成功复制信笺全文到剪贴板',
+    letterBodyHtml: `
+      <p>山川辽阔，风月无边。有些心绪深重细腻，寻常言语总嫌浅薄，于是我让漫天纷飞的落花代为诉说——它们一瓣一瓣悠悠飘落，正如我对你的思念，不曾有过停歇。</p>
+
+      <div class="quote-highlight">
+        <div class="zh-quote">山有木兮木有枝，心悦君兮君可知。</div>
+        <div class="en-subquote">Trees have branches and mountains have trees; my heart longs for you, did you know?</div>
+      </div>
+
+      <p>你是清晨那一抹温柔静谧的晨曦，是我每个寻常日子里最不由自主的微笑。如果可以，我想在漫天每一片青竹与飞花上，都写满你的名字。</p>
+
+      <div class="quote-highlight">
+        <div class="zh-quote">往后余生，风雪是你，平淡是你，目光所至，皆是你。</div>
+        <div class="en-subquote">For all the days to come, in storms and gentle peace, wherever my gaze turns, there you are.</div>
+      </div>
+
+      <p>愿你岁岁常欢愉，万事皆胜意。不论晨昏与四季，情深长留，初心未负。</p>
+    `,
+    verses: [
+      {
+        source: '《诗经·邶风·击鼓》',
+        main: '死生契阔，与子成说。执子之手，与子偕老。',
+        sub: '"In life and death, we pledged our vows; I hold your hand, and grow old with you."'
+      },
+      {
+        source: '元稹 · 《离思五首·其四》',
+        main: '曾经沧海难为水，除却巫山不是云。',
+        sub: '"Having seen the vast ocean, no other water can compare; having beheld the clouds of Mount Wu, no other mist is true cloud."'
+      },
+      {
+        source: '纳兰性德 · 《浣溪沙》',
+        main: '赌书消得泼茶香，当时只道是寻常。',
+        sub: '"Contesting verses till spilled tea perfumed the quiet room; what once seemed ordinary now glows timeless in memory."'
+      },
+      {
+        source: '仓央嘉措 · 《情诗》',
+        main: '世间安得双全法，不负如来不负卿。',
+        sub: '"Could there exist in this realm a sacred path that fulfills both the heavens and my devotion to you."'
+      }
+    ],
+    poeticRibbon: [
+      { en: 'With All My Heart', zh: '见字如面 · 情深脉脉' },
+      { en: 'Xie QingZhu', zh: '风摇青竹 · 意在心头' },
+      { en: 'Forever & Always', zh: '山水兼程 · 皆落眼中' },
+      { en: 'My Dearest', zh: '吾之所向 · 唯你而已' },
+      { en: 'Morning & Twilight', zh: '朝暮与共 · 行至白头' },
+      { en: 'Starlight & Dew', zh: '愿逐月华 · 照君欢颜' }
+    ],
+    keepsakeList: [
+      { main: '“春水初生，春林初盛，春风十里，不如你。”', sub: '— 愿岁岁年年，深情共许 —' },
+      { main: '“愿我如星君如月，夜夜流光相皎洁。”', sub: '— 范成大 · 《车遥遥篇》 —' },
+      { main: '“我见青山多妩媚，料青山见我应如是。”', sub: '— 辛弃疾 · 眉目皆是你 —' },
+      { main: '“晓看天色暮看云，行也思君，坐也思君。”', sub: '— 唐寅 · 心之所系 —' },
+      { main: '“换我心，为你心，始知相忆深。”', sub: '— 顾敻 · 眷念入骨 —' },
+      { main: '“青竹拂清风，明月照深情。”', sub: '— 致谢青竹 · 永伴身侧 —' }
+    ],
+    clipboardLetter: `致 · 谢青竹：\n见字如晤。\n山川辽阔，风月无边。有些心绪深重细腻，寻常言语总嫌浅薄，于是我让漫天纷飞的落花代为诉说——它们一瓣一瓣悠悠飘落，正如我对你的思念，不曾有过停歇。\n\n山有木兮木有枝，心悦君兮君可知。\n\n你是清晨那一抹温柔静谧的晨曦，是我每个寻常日子里最不由自主的微笑。如果可以，我想在漫天每一片青竹与飞花上，都写满你的名字。\n\n往后余生，风雪是你，平淡是你，目光所至，皆是你。\n\n愿你岁岁常欢愉，万事皆胜意。不论晨昏与四季，情深长留，初心未负。\n\nForever & always yours,\n念你之人`
+  },
+
+  en: {
+    pageTitle: 'To Xie Qingzhu · A Letter Across Distance · A Letter For You',
+    siteTitle: 'To · Xie Qingzhu',
+    peekTitle: 'To · Xie Qingzhu',
+    envHint: 'Unseal the Letter · With Love',
+    bottomHint: '✦ Stir the breeze · Tap to bloom blossoms ✦',
+    langText: '中',
+    langTooltip: 'Switch to Chinese (切换至中文)',
+    audioNormal: 'Melody · Ambient Harp',
+    audioPlaying: 'Melody Playing · Sound On',
+    audioMuted: 'Play Melody · Sound Off',
+    themeTooltip: 'Parchment / Moonlit (Day / Night)',
+    tabLetter: 'The Letter',
+    tabVerses: 'Poetic Verses',
+    tabKeepsake: 'Keepsake',
+    recipientName: 'To · Xie Qingzhu',
+    recipientSeal: 'For Qingzhu',
+    subGreeting: 'May Every Joy & Peace Be Yours',
+    signClosing: 'Forever & always yours,',
+    signName: 'The One Longing for You',
+    drawBtn: 'Draw Romantic Thought',
+    copyBtn: 'Copy Full Letter',
+    toastCopied: '✨ Letter copied to clipboard successfully!',
+    letterBodyHtml: `
+      <p>Across boundless mountains and endless horizons, the moonlight gently falls. Some feelings are too profound and tender for ordinary words, so I let the falling blossoms speak for me instead — drifting softly, one petal after another, just as my thoughts of you never cease.</p>
+
+      <div class="quote-highlight">
+        <div class="zh-quote">"Trees have branches and mountains have trees; my heart longs for you, did you know?"</div>
+        <div class="en-subquote">山有木兮木有枝，心悦君兮君可知。</div>
+      </div>
+
+      <p>You are the gentle, quiet light of my mornings, and the most involuntary smile in all my ordinary days. If I could, I would write your name upon every leaf of green bamboo and every drifting flower in the sky.</p>
+
+      <div class="quote-highlight">
+        <div class="zh-quote">"For all the days to come, in storms and gentle peace, wherever my gaze turns, there you are."</div>
+        <div class="en-subquote">往后余生，风雪是你，平淡是你，目光所至，皆是你。</div>
+      </div>
+
+      <p>May every year bring you boundless happiness, and may life fulfill all your heart’s wishes. Through dawn and dusk, in every passing season, my affection remains steadfast, pure, and true.</p>
+    `,
+    verses: [
+      {
+        source: 'The Book of Songs · Airs of Bei',
+        main: '"In life and death, we pledged our vows; I hold your hand, and grow old with you."',
+        sub: '死生契阔，与子成说。执子之手，与子偕老。'
+      },
+      {
+        source: 'Yuan Zhen · Thoughts on Leaving',
+        main: '"Having seen the vast ocean, no other water can compare; having beheld the clouds of Mount Wu, no other mist is true cloud."',
+        sub: '曾经沧海难为水，除却巫山不是云。'
+      },
+      {
+        source: 'Nalan Xingde · Sand of the Silk-Washing Stream',
+        main: '"Contesting verses till spilled tea perfumed the quiet room; what once seemed ordinary now glows timeless in memory."',
+        sub: '赌书消得泼茶香，当时只道是寻常。'
+      },
+      {
+        source: 'Tsangyang Gyatso · Sacred Love Verses',
+        main: '"Could there exist in this realm a sacred path that fulfills both heaven and my devotion to you."',
+        sub: '世间安得双全法，不负如来不负卿。'
+      }
+    ],
+    poeticRibbon: [
+      { en: 'With All My Heart', zh: 'Seeing these words is like meeting face to face' },
+      { en: 'Xie QingZhu', zh: 'Wind stirs the green bamboo, your name in my heart' },
+      { en: 'Forever & Always', zh: 'Through every journey, you remain in my eyes' },
+      { en: 'My Dearest One', zh: 'Wherever my path wanders, it leads only to you' },
+      { en: 'Dawn & Twilight', zh: 'Sharing every morning and dusk through the years' },
+      { en: 'Starlight & Dew', zh: 'Chasing the moonlight to illuminate your smile' }
+    ],
+    keepsakeList: [
+      { main: '“Spring waters rise, spring woods flourish, but ten miles of spring breeze cannot compare to you.”', sub: '— Dedicated to Xie Qingzhu, Always & Forever —' },
+      { main: '“May I be as the stars and you as the moon, night after night shining together in radiant light.”', sub: '— Fan Chengda · Everlasting Bond —' },
+      { main: '“I find the mountains enchanting, and I expect the mountains find me so too — yet my eyes see only you.”', sub: '— Xin Qiji · My Heart’s Choice —' },
+      { main: '“Looking at morning skies and evening clouds, walking I miss you, sitting I miss you still.”', sub: '— Tang Yin · Constant Devotion —' },
+      { main: '“Trade your heart for mine, and only then will you know how deep my longing reaches.”', sub: '— Gu Xiong · Tender Love —' },
+      { main: '“Green bamboo sways in gentle breezes, and the moon shines on our enduring love.”', sub: '— For Qingzhu · Eternally By Your Side —' }
+    ],
+    clipboardLetter: `To · Xie Qingzhu:\n\nAcross boundless mountains and endless horizons, the moonlight gently falls. Some feelings are too profound and tender for ordinary words, so I let the falling blossoms speak for me instead — drifting softly, one petal after another, just as my thoughts of you never cease.\n\n"Trees have branches and mountains have trees; my heart longs for you, did you know?"\n(山有木兮木有枝，心悦君兮君可知)\n\nYou are the gentle, quiet light of my mornings, and the most involuntary smile in all my ordinary days. If I could, I would write your name upon every leaf of green bamboo and every drifting flower in the sky.\n\n"For all the days to come, in storms and gentle peace, wherever my gaze turns, there you are."\n(往后余生，风雪是你，平淡是你，目光所至，皆是你)\n\nMay every year bring you boundless happiness, and may life fulfill all your heart’s wishes. Through dawn and dusk, in every passing season, my affection remains steadfast, pure, and true.\n\nForever & always yours,\n念你之人`
+  }
+};
+
+let currentLang = 'zh';
+
+function applyLanguage(lang) {
+  currentLang = lang;
+  document.documentElement.lang = (lang === 'zh' ? 'zh-CN' : 'en');
+  const d = I18N[lang];
+
+  // Title and top bar
+  document.getElementById('pageTitle').textContent = d.pageTitle;
+  document.getElementById('siteTitle').textContent = d.siteTitle;
+  document.getElementById('langText').textContent = d.langText;
+  document.getElementById('langTooltip').textContent = d.langTooltip;
+  document.getElementById('themeTooltip').textContent = d.themeTooltip;
+
+  // Audio tooltip
+  const audioTooltip = document.getElementById('audioTooltip');
+  audioTooltip.textContent = isAudioActive ? d.audioPlaying : (audioBtn.classList.contains('active') ? d.audioPlaying : d.audioNormal);
+
+  // Envelope and bottom
+  document.getElementById('peekTitle').textContent = d.peekTitle;
+  document.getElementById('envHintText').textContent = d.envHint;
+  document.getElementById('bottomHintText').textContent = d.bottomHint;
+
+  // Tabs
+  document.getElementById('tabBtnLetter').textContent = d.tabLetter;
+  document.getElementById('tabBtnVerses').textContent = d.tabVerses;
+  document.getElementById('tabBtnKeepsake').textContent = d.tabKeepsake;
+
+  // Tab 1: Letter
+  document.getElementById('recipientName').textContent = d.recipientName;
+  document.getElementById('recipientSeal').textContent = d.recipientSeal;
+  document.getElementById('subGreeting').textContent = d.subGreeting;
+  document.getElementById('letterBodyContent').innerHTML = d.letterBodyHtml;
+  document.getElementById('signClosing').textContent = d.signClosing;
+  document.getElementById('signName').textContent = d.signName;
+
+  // Tab 2: Verses
+  const versesContainer = document.getElementById('versesContainer');
+  versesContainer.innerHTML = d.verses.map(v => `
+    <div class="verse-card">
+      <div class="verse-source">${v.source}</div>
+      <div class="verse-chinese">${v.main}</div>
+      <div class="verse-english">${v.sub}</div>
+    </div>
+  `).join('');
+
+  // Tab 3: Keepsake
+  document.getElementById('drawQuoteBtnText').textContent = d.drawBtn;
+  document.getElementById('copyLetterBtnText').textContent = d.copyBtn;
+  const currentKeepsake = d.keepsakeList[keepsakeIdx % d.keepsakeList.length];
+  document.getElementById('keepsakeText').textContent = currentKeepsake.main;
+  document.getElementById('keepsakeSub').textContent = currentKeepsake.sub;
+
+  // Update rotating ribbons immediately with current language
+  updatePhrases(true);
+
+  // Persist preference
+  try {
+    localStorage.setItem('qingzhu_letter_lang', lang);
+  } catch(e) {}
+}
+
+/* =========================================================
+   2. HIGH-PRECISION 3D FLOWER & BAMBOO CANVAS ENGINE
    ========================================================= */
 const canvas = document.getElementById('petals');
 const ctx = canvas.getContext('2d');
@@ -1116,7 +1372,7 @@ window.addEventListener('click', e => {
 });
 
 /* =========================================================
-   2. GENERATIVE WEB AUDIO ENGINE (ZERO EXTERNAL ASSETS)
+   3. GENERATIVE WEB AUDIO ENGINE (ZERO EXTERNAL ASSETS)
    ========================================================= */
 let audioCtx = null;
 let isAudioActive = false;
@@ -1224,22 +1480,23 @@ audioBtn.addEventListener('click', e => {
   e.stopPropagation();
   initAudio();
   isAudioActive = !isAudioActive;
+  const d = I18N[currentLang];
   if (isAudioActive) {
     audioBtn.classList.add('active');
     audioIcon.textContent = '🎶';
-    audioTooltip.textContent = '音乐播放中 · Playing';
+    audioTooltip.textContent = d.audioPlaying;
     startAmbientGenerative();
     playMelodyNote(587.33);
   } else {
     audioBtn.classList.remove('active');
     audioIcon.textContent = '🎵';
-    audioTooltip.textContent = '开启音律 · Play Sound';
+    audioTooltip.textContent = d.audioMuted;
     if (ambientTimer) clearInterval(ambientTimer);
   }
 });
 
 /* =========================================================
-   3. THEME TOGGLE (DAY & NIGHT CELESTIAL STYLES)
+   4. THEME TOGGLE (DAY & NIGHT CELESTIAL STYLES)
    ========================================================= */
 const themeBtn = document.getElementById('themeToggle');
 const themeIcon = document.getElementById('themeIcon');
@@ -1256,17 +1513,22 @@ themeBtn.addEventListener('click', e => {
 });
 
 /* =========================================================
-   4. ROTATING POETIC PHRASES (SMOOTH CROSS-FADE)
+   5. LANGUAGE SWITCHER (EN / ZH)
    ========================================================= */
-const POETIC_VERSES = [
-  { en: 'With All My Heart', zh: '见字如面 · 情深脉脉' },
-  { en: 'Xie QingZhu', zh: '风摇青竹 · 意在心头' },
-  { en: 'Forever & Always', zh: '山水兼程 · 皆落眼中' },
-  { en: 'My Dearest', zh: '吾之所向 · 唯你而已' },
-  { en: 'Morning & Twilight', zh: '朝暮与共 · 行至白头' },
-  { en: 'Starlight & Dew', zh: '愿逐月华 · 照君欢颜' }
-];
+const langBtn = document.getElementById('langToggle');
 
+langBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  const nextLang = currentLang === 'zh' ? 'en' : 'zh';
+  applyLanguage(nextLang);
+
+  if (isAudioActive) playMelodyNote(nextLang === 'en' ? 783.99 : 659.25);
+  showToast(nextLang === 'en' ? 'Switched to English UI' : '已切换至中文界面');
+});
+
+/* =========================================================
+   6. ROTATING POETIC PHRASES (SMOOTH CROSS-FADE)
+   ========================================================= */
 let phraseIndex = 0;
 const topCard = document.getElementById('topCard');
 const botCard = document.getElementById('botCard');
@@ -1275,15 +1537,27 @@ const topZh = document.getElementById('topZh');
 const botEn = document.getElementById('botEn');
 const botZh = document.getElementById('botZh');
 
-function updatePhrases() {
+function updatePhrases(immediate = false) {
+  const verses = I18N[currentLang].poeticRibbon;
+
+  if (immediate) {
+    const topData = verses[phraseIndex % verses.length];
+    const botData = verses[(phraseIndex + 1) % verses.length];
+    topEn.textContent = topData.en;
+    topZh.textContent = topData.zh;
+    botEn.textContent = botData.en;
+    botZh.textContent = botData.zh;
+    return;
+  }
+
   // Fade out
   topCard.classList.remove('active');
   botCard.classList.remove('active');
 
   setTimeout(() => {
-    phraseIndex = (phraseIndex + 1) % POETIC_VERSES.length;
-    const topData = POETIC_VERSES[phraseIndex];
-    const botData = POETIC_VERSES[(phraseIndex + 1) % POETIC_VERSES.length];
+    phraseIndex = (phraseIndex + 1) % verses.length;
+    const topData = verses[phraseIndex];
+    const botData = verses[(phraseIndex + 1) % verses.length];
 
     topEn.textContent = topData.en;
     topZh.textContent = topData.zh;
@@ -1294,10 +1568,10 @@ function updatePhrases() {
     botCard.classList.add('active');
   }, 1000);
 }
-setInterval(updatePhrases, 5400);
+setInterval(() => updatePhrases(false), 5400);
 
 /* =========================================================
-   5. 3D ENVELOPE OPENING & LETTER MODAL CEREMONY
+   7. 3D ENVELOPE OPENING & LETTER MODAL CEREMONY
    ========================================================= */
 const envelopeScene = document.getElementById('envelopeScene');
 const envelope3D = document.getElementById('envelope3D');
@@ -1373,7 +1647,7 @@ window.addEventListener('keydown', e => {
 });
 
 /* =========================================================
-   6. MODAL TABS NAVIGATION
+   8. MODAL TABS NAVIGATION
    ========================================================= */
 const tabButtons = document.querySelectorAll('.tab-btn');
 const tabPages = document.querySelectorAll('.tab-page');
@@ -1393,17 +1667,8 @@ tabButtons.forEach(btn => {
 });
 
 /* =========================================================
-   7. KEEPSAKE & QUOTE GENERATOR
+   9. KEEPSAKE & QUOTE GENERATOR
    ========================================================= */
-const KEEPSAKE_QUOTES = [
-  { main: '“春水初生，春林初盛，春风十里，不如你。”', sub: '— 愿岁岁年年，深情共许 —' },
-  { main: '“愿我如星君如月，夜夜流光相皎洁。”', sub: '— 范成大 · 《车遥遥篇》 —' },
-  { main: '“我见青山多妩媚，料青山见我应如是。”', sub: '— 辛弃疾 · 眉目皆是你 —' },
-  { main: '“晓看天色暮看云，行也思君，坐也思君。”', sub: '— 唐寅 · 心之所系 —' },
-  { main: '“换我心，为你心，始知相忆深。”', sub: '— 顾敻 · 眷念入骨 —' },
-  { main: '“青竹拂清风，明月照深情。”', sub: '— 致谢青竹 · 永伴身侧 —' }
-];
-
 let keepsakeIdx = 0;
 const nextQuoteBtn = document.getElementById('nextQuoteBtn');
 const keepsakeText = document.getElementById('keepsakeText');
@@ -1412,12 +1677,13 @@ const copyLetterBtn = document.getElementById('copyLetterBtn');
 const toast = document.getElementById('toast');
 
 nextQuoteBtn.addEventListener('click', () => {
-  keepsakeIdx = (keepsakeIdx + 1) % KEEPSAKE_QUOTES.length;
+  const quotes = I18N[currentLang].keepsakeList;
+  keepsakeIdx = (keepsakeIdx + 1) % quotes.length;
   keepsakeText.style.opacity = 0;
   keepsakeSub.style.opacity = 0;
   setTimeout(() => {
-    keepsakeText.textContent = KEEPSAKE_QUOTES[keepsakeIdx].main;
-    keepsakeSub.textContent = KEEPSAKE_QUOTES[keepsakeIdx].sub;
+    keepsakeText.textContent = quotes[keepsakeIdx].main;
+    keepsakeSub.textContent = quotes[keepsakeIdx].sub;
     keepsakeText.style.opacity = 1;
     keepsakeSub.style.opacity = 1;
   }, 250);
@@ -1432,15 +1698,27 @@ function showToast(msg) {
 }
 
 copyLetterBtn.addEventListener('click', () => {
-  const fullLetter = `致 · 谢青竹：\n见字如晤。\n山川辽阔，风月无边。有些心绪深重细腻，寻常言语总嫌浅薄，于是我让漫天纷飞的落花代为诉说——它们一瓣一瓣悠悠飘落，正如我对你的思念，不曾有过停歇。\n\n山有木兮木有枝，心悦君兮君可知。\n\n你是清晨那一抹温柔静谧的晨曦，是我每个寻常日子里最不由自主的微笑。如果可以，我想在漫天每一片青竹与飞花上，都写满你的名字。\n\n往后余生，风雪是你，平淡是你，目光所至，皆是你。\n\nForever & always yours,\n念你之人`;
+  const fullLetter = I18N[currentLang].clipboardLetter;
   navigator.clipboard.writeText(fullLetter).then(() => {
-    showToast('✨ 已成功复制信笺全文到剪贴板');
+    showToast(I18N[currentLang].toastCopied);
   }).catch(() => {
-    showToast('已选中信笺文字，请直接复制');
+    showToast(currentLang === 'zh' ? '已选中文字，请直接复制' : 'Text selected, please copy manually');
   });
 
   if (isAudioActive) playMelodyNote(880.00);
 });
+
+// Initialize Language on load from saved preference
+try {
+  const savedLang = localStorage.getItem('qingzhu_letter_lang');
+  if (savedLang === 'en' || savedLang === 'zh') {
+    applyLanguage(savedLang);
+  } else {
+    applyLanguage('zh');
+  }
+} catch(e) {
+  applyLanguage('zh');
+}
 </script>
 </body>
 </html>
