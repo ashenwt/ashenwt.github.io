@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>致谢青竹 · 见字如晤 · A Letter For You</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,600&family=Noto+Serif+SC:wght@300;400;500;600;700&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Day Theme: 素笺暖阳 (Ivory Xuan Paper & Warm Sunlight) */
+    --bg-grad-1: rgba(192, 57, 43, 0.07);
+    --bg-grad-2: rgba(176, 141, 87, 0.09);
+    --bg-base: #f8f4ec;
+    --paper-card: #fcfaf3;
+    --paper-border: rgba(43, 43, 40, 0.16);
+    --paper-line: rgba(43, 43, 40, 0.09);
+    --ink: #2b2b28;
+    --ink-soft: #605a50;
+    --ink-faint: #989184;
+    --vermilion: #b9382b;
+    --vermilion-soft: #d9534f;
+    --vermilion-glow: rgba(185, 56, 43, 0.28);
+    --gold: #b08d57;
+    --gold-light: #d8ba82;
+    --gold-glow: rgba(176, 141, 87, 0.35);
+    --bamboo-green: #486a47;
+    --bamboo-light: #7a9c79;
+    --env-back: #e8decb;
+    --env-body-1: #eee4d3;
+    --env-body-2: #dfd2bc;
+    --env-flap-1: #ebdcc8;
+    --env-flap-2: #d9c8af;
+    --env-shadow: rgba(35, 30, 20, 0.26);
+    --modal-backdrop: rgba(28, 24, 18, 0.42);
+    --card-shadow: 0 32px 75px -15px rgba(35, 30, 20, 0.28), 0 10px 25px rgba(35, 30, 20, 0.12);
+    --font-serif: 'Cormorant Garamond', 'Noto Serif SC', serif;
+    --font-zh: 'Noto Serif SC', serif;
+    --font-calligraphy: 'Ma Shan Zheng', cursive;
+    --font-en-display: 'Cinzel', 'Cormorant Garamond', serif;
+  }
+
+  [data-theme="night"] {
+    /* Night Theme: 月映竹影 (Midnight Indigo & Bamboo Moon) */
+    --bg-grad-1: rgba(35, 70, 115, 0.26);
+    --bg-grad-2: rgba(212, 175, 110, 0.14);
+    --bg-base: #0b1018;
+    --paper-card: #131a24;
+    --paper-border: rgba(212, 175, 110, 0.24);
+    --paper-line: rgba(255, 255, 255, 0.08);
+    --ink: #f2eee8;
+    --ink-soft: #bac3cf;
+    --ink-faint: #758396;
+    --vermilion: #e44d3d;
+    --vermilion-soft: #ff6e5f;
+    --vermilion-glow: rgba(228, 77, 61, 0.48);
+    --gold: #d8b273;
+    --gold-light: #f7dea5;
+    --gold-glow: rgba(216, 178, 115, 0.45);
+    --bamboo-green: #5ea87a;
+    --bamboo-light: #88c99e;
+    --env-back: #17212e;
+    --env-body-1: #1e2a3b;
+    --env-body-2: #15202d;
+    --env-flap-1: #243349;
+    --env-flap-2: #1b2636;
+    --env-shadow: rgba(0, 0, 0, 0.75);
+    --modal-backdrop: rgba(3, 6, 11, 0.78);
+    --card-shadow: 0 32px 85px -10px rgba(0, 0, 0, 0.8), 0 0 50px rgba(212, 175, 110, 0.18);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body {
+    width: 100%; height: 100%;
+    overflow: hidden;
+    position: fixed;
+  }
+  body {
+    background:
+      radial-gradient(ellipse at 15% 15%, var(--bg-grad-1), transparent 50%),
+      radial-gradient(ellipse at 85% 85%, var(--bg-grad-2), transparent 55%),
+      var(--bg-base);
+    color: var(--ink);
+    font-family: var(--font-serif);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background 0.85s cubic-bezier(0.2, 0.8, 0.3, 1), color 0.85s ease;
+    user-select: none;
+  }
+
+  /* Paper grain texture overlay */
+  .paper-grain {
+    position: fixed; inset: 0; pointer-events: none; z-index: 2; opacity: 0.045;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  /* Ambient moon/sun bloom */
+  .ambient-bloom {
+    position: fixed; top: -90px; right: 10%; width: 450px; height: 450px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--gold-glow), transparent 70%);
+    pointer-events: none; z-index: 1; opacity: 0.55;
+    transition: all 1s ease;
+    filter: blur(40px);
+  }
+  [data-theme="night"] .ambient-bloom {
+    top: -50px; right: 8%; width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(165, 210, 255, 0.24), transparent 65%);
+    opacity: 0.85;
+  }
+
+  /* Canvas */
+  #petals {
+    position: fixed; inset: 0; z-index: 3; pointer-events: none;
+  }
+
+  /* Top Control Bar */
+  .top-bar {
+    position: fixed; top: 22px; left: 0; right: 0;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 30px; z-index: 15;
+  }
+  .top-left-seal {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .stamp-box {
+    width: 34px; height: 34px; border: 1.5px solid var(--vermilion);
+    border-radius: 3px; display: flex; align-items: center; justify-content: center;
+    color: var(--vermilion); font-family: var(--font-calligraphy);
+    font-size: 17px; background: rgba(185, 56, 43, 0.06);
+    box-shadow: 0 0 12px var(--vermilion-glow);
+    transition: transform 0.4s ease, border-color 0.4s ease;
+    cursor: default;
+  }
+  .stamp-box:hover { transform: scale(1.08) rotate(3deg); }
+  .top-site-title {
+    font-family: var(--font-en-display); font-size: 11.5px; letter-spacing: 0.38em;
+    text-transform: uppercase; color: var(--ink-soft); font-weight: 600;
+  }
+
+  .top-controls {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .icon-btn {
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid var(--paper-border);
+    backdrop-filter: blur(10px);
+    color: var(--ink-soft);
+    width: 38px; height: 38px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    font-size: 15px; position: relative;
+  }
+  .icon-btn:hover {
+    color: var(--ink); border-color: var(--gold);
+    transform: translateY(-2px); box-shadow: 0 4px 14px var(--gold-glow);
+  }
+  .icon-btn.active {
+    color: var(--vermilion); border-color: var(--vermilion);
+    box-shadow: 0 0 14px var(--vermilion-glow);
+    animation: musicPulse 2s infinite ease-in-out;
+  }
+  @keyframes musicPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.07); }
+  }
+  .tooltip {
+    position: absolute; top: calc(100% + 8px); right: 0;
+    background: var(--paper-card); color: var(--ink);
+    border: 1px solid var(--paper-border);
+    padding: 5px 11px; border-radius: 4px;
+    font-size: 11px; font-family: var(--font-zh);
+    white-space: nowrap; pointer-events: none;
+    opacity: 0; transform: translateY(-4px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
+  }
+  .icon-btn:hover .tooltip { opacity: 1; transform: translateY(0); }
+
+  /* Top and Bottom Rotating Poetry Ribbons */
+  .poetic-ribbon {
+    position: fixed; left: 50%; transform: translateX(-50%);
+    z-index: 6; text-align: center; pointer-events: none;
+    width: 90%; max-width: 750px;
+  }
+  #phraseTop { top: 12vh; }
+  #phraseBottom { bottom: 9.5vh; }
+
+  .phrase-card {
+    position: relative; opacity: 0; transform: translateY(14px) scale(0.98);
+    transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .phrase-card.active {
+    opacity: 1; transform: translateY(0) scale(1);
+  }
+  .phrase-en {
+    font-family: var(--font-en-display); font-size: clamp(13px, 1.4vw, 17px);
+    letter-spacing: 0.42em; text-transform: uppercase; color: var(--gold);
+    margin-bottom: 6px; font-weight: 600;
+    text-shadow: 0 1px 12px var(--gold-glow);
+  }
+  .phrase-zh {
+    font-family: var(--font-zh); font-weight: 300;
+    font-size: clamp(23px, 3vw, 38px); letter-spacing: 0.38em;
+    color: var(--ink); padding-left: 0.38em;
+    text-shadow: 0 2px 22px rgba(0, 0, 0, 0.08);
+  }
+  .phrase-line {
+    width: 52px; height: 1.5px;
+    background: linear-gradient(90deg, transparent, var(--vermilion), transparent);
+    margin: 10px auto 0;
+  }
+
+  /* Interactive Stage & Envelope */
+  .stage {
+    position: fixed; inset: 0; z-index: 5;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .envelope-scene {
+    position: relative; perspective: 1300px;
+    cursor: pointer;
+  }
+  .envelope-3d {
+    position: relative; width: min(370px, 86vw); height: 242px;
+    border-radius: 6px;
+    background: linear-gradient(145deg, var(--env-body-1), var(--env-body-2));
+    border: 1px solid var(--paper-border);
+    box-shadow: var(--card-shadow);
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 0.6s ease;
+  }
+  .envelope-scene:hover .envelope-3d {
+    transform: translateY(-8px) rotateX(4deg) rotateY(-2deg);
+    box-shadow: 0 40px 85px -15px var(--env-shadow), 0 0 35px var(--gold-glow);
+  }
+
+  /* Inner Lining with delicate gold leaf pattern */
+  .env-inside {
+    position: absolute; inset: 0; border-radius: 5px; overflow: hidden;
+    background:
+      radial-gradient(circle at 50% 30%, var(--bg-grad-2), transparent 70%),
+      linear-gradient(to bottom, var(--env-back), var(--env-body-2));
+    border: 1px dashed var(--paper-border);
+  }
+  .env-inside-pattern {
+    position: absolute; inset: 0; opacity: 0.16;
+    background-image: radial-gradient(var(--gold) 1.2px, transparent 1.2px);
+    background-size: 16px 16px;
+  }
+
+  /* Letter Paper peek inside envelope */
+  .letter-peek {
+    position: absolute; left: 6%; right: 6%; bottom: 8px; height: 86%;
+    background: var(--paper-card);
+    border-radius: 4px 4px 0 0;
+    border: 1px solid var(--paper-border);
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+    display: flex; flex-direction: column; align-items: center; padding-top: 15px;
+    overflow: hidden;
+  }
+  .letter-peek-stripes {
+    width: 75%; height: 2px; background: var(--paper-line); margin: 6px 0;
+  }
+  .letter-peek-title {
+    font-family: var(--font-zh); font-size: 14.5px; color: var(--vermilion);
+    letter-spacing: 0.28em; margin-bottom: 8px; font-weight: 500;
+  }
+  .envelope-scene:hover .letter-peek {
+    transform: translateY(-18px);
+  }
+
+  /* Envelope Body Flaps (Geometric Fold) */
+  .env-folds {
+    position: absolute; inset: 0; z-index: 4; pointer-events: none;
+    clip-path: polygon(0 0, 50% 53%, 100% 0, 100% 100%, 0 100%);
+    background:
+      linear-gradient(120deg, transparent 49.7%, var(--paper-border) 50%, transparent 50.3%),
+      linear-gradient(240deg, transparent 49.7%, var(--paper-border) 50%, transparent 50.3%),
+      linear-gradient(180deg, var(--env-body-1), var(--env-body-2));
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Top Folding Flap with 3D unfold */
+  .env-top-flap {
+    position: absolute; top: 0; left: 0; width: 100%; height: 58%;
+    background: linear-gradient(195deg, var(--env-flap-1), var(--env-flap-2));
+    clip-path: polygon(0 0, 100% 0, 50% 95%);
+    transform-origin: top;
+    transform-style: preserve-3d;
+    transition: transform 0.95s cubic-bezier(0.65, 0, 0.25, 1);
+    z-index: 5;
+    border-bottom: 1px solid var(--paper-border);
+  }
+  .env-top-flap::after {
+    content: ''; position: absolute; inset: 0;
+    clip-path: polygon(0 0, 100% 0, 50% 95%);
+    box-shadow: inset 0 3px 8px rgba(255, 255, 255, 0.16);
+  }
+
+  /* Wax Seal Stamp */
+  .wax-seal {
+    position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
+    width: 62px; height: 62px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #e2584b, var(--vermilion), #7a180f);
+    box-shadow:
+      0 6px 20px var(--vermilion-glow),
+      0 2px 6px rgba(0, 0, 0, 0.4),
+      inset 0 2px 4px rgba(255, 255, 255, 0.45),
+      inset 0 -2px 6px rgba(0, 0, 0, 0.6);
+    z-index: 6; display: flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    transition: transform 0.5s cubic-bezier(0.3, 1.4, 0.5, 1), opacity 0.4s ease, box-shadow 0.4s ease;
+  }
+  .wax-seal-inner {
+    width: 50px; height: 50px; border-radius: 50%;
+    border: 1.5px dashed rgba(253, 248, 238, 0.65);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .wax-seal-inner span {
+    font-family: var(--font-calligraphy); font-size: 27px;
+    color: #fff6e8; text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    line-height: 1; transform: translateY(-1px);
+  }
+  .envelope-scene:hover .wax-seal {
+    transform: translateX(-50%) scale(1.08);
+    box-shadow: 0 8px 26px var(--vermilion-glow), 0 0 20px var(--gold-glow);
+  }
+
+  /* Pulsing Hint below envelope */
+  .envelope-hint {
+    position: absolute; bottom: -50px; left: 50%; transform: translateX(-50%);
+    white-space: nowrap; font-size: 12px; letter-spacing: 0.35em;
+    text-transform: uppercase; color: var(--ink-soft);
+    display: flex; align-items: center; gap: 8px;
+    animation: gentlePulse 2.8s ease-in-out infinite;
+    font-family: var(--font-en-display);
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+  }
+  .hint-icon { font-size: 13px; color: var(--vermilion); }
+  @keyframes gentlePulse {
+    0%, 100% { opacity: 0.45; transform: translateX(-50%) translateY(0); }
+    50% { opacity: 0.95; transform: translateX(-50%) translateY(-3px); }
+  }
+
+  /* ================= UNROLLED FULL LETTER MODAL ================= */
+  .letter-backdrop {
+    position: fixed; inset: 0;
+    background: var(--modal-backdrop);
+    backdrop-filter: blur(10px);
+    z-index: 50; opacity: 0; pointer-events: none;
+    transition: opacity 0.75s cubic-bezier(0.2, 0.8, 0.3, 1);
+  }
+  .letter-backdrop.active {
+    opacity: 1; pointer-events: auto;
+  }
+
+  .letter-modal {
+    position: fixed; top: 50%; left: 50%;
+    transform: translate(-50%, -46%) scale(0.92);
+    width: min(690px, 92vw); max-height: min(84vh, 760px);
+    background: var(--paper-card);
+    border: 1px solid var(--paper-border);
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+    z-index: 60; opacity: 0; pointer-events: none;
+    display: flex; flex-direction: column;
+    transition:
+      transform 0.8s cubic-bezier(0.18, 1, 0.25, 1),
+      opacity 0.6s cubic-bezier(0.2, 0.8, 0.3, 1);
+    overflow: hidden;
+  }
+  .letter-modal.active {
+    opacity: 1; pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  /* Decorative Red Bookmark Ribbon */
+  .modal-ribbon {
+    position: absolute; top: 0; right: 48px; width: 22px; height: 42px;
+    background: linear-gradient(180deg, var(--vermilion), #8e1c12);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 75%, 0 100%);
+    box-shadow: 0 4px 12px var(--vermilion-glow);
+    z-index: 10;
+  }
+
+  /* Modal Header */
+  .modal-header {
+    padding: 22px 28px 12px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid var(--paper-line);
+    position: relative;
+  }
+  .modal-tabs {
+    display: flex; gap: 8px;
+  }
+  .tab-btn {
+    background: none; border: 1px solid transparent;
+    padding: 6px 15px; border-radius: 20px;
+    font-family: var(--font-zh); font-size: 13.5px;
+    letter-spacing: 0.15em; color: var(--ink-soft);
+    cursor: pointer; transition: all 0.3s ease;
+  }
+  .tab-btn:hover {
+    color: var(--ink); border-color: var(--paper-border);
+  }
+  .tab-btn.active {
+    background: rgba(185, 56, 43, 0.08);
+    border-color: var(--vermilion);
+    color: var(--vermilion);
+    font-weight: 600;
+  }
+  .modal-close-btn {
+    background: none; border: none; font-size: 24px;
+    color: var(--ink-soft); cursor: pointer; line-height: 1;
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.25s ease;
+  }
+  .modal-close-btn:hover {
+    color: var(--vermilion); background: rgba(185, 56, 43, 0.1);
+    transform: rotate(90deg);
+  }
+
+  /* Modal Content Body */
+  .modal-scroll-area {
+    padding: 30px 40px 26px;
+    overflow-y: auto; scrollbar-width: thin;
+    scrollbar-color: var(--paper-border) transparent;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+  }
+  .modal-scroll-area::-webkit-scrollbar { width: 5px; }
+  .modal-scroll-area::-webkit-scrollbar-thumb {
+    background: var(--paper-border); border-radius: 3px;
+  }
+
+  /* Tab Page Transition */
+  .tab-page {
+    display: none; animation: fadeInPage 0.5s ease forwards;
+  }
+  .tab-page.active { display: block; }
+  @keyframes fadeInPage {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Letter Page Content Styling */
+  .letter-salutation-wrap {
+    text-align: center; margin-bottom: 24px; position: relative;
+  }
+  .letter-recipient {
+    font-family: var(--font-zh); font-weight: 700;
+    font-size: 27px; letter-spacing: 0.3em;
+    color: var(--ink); margin-bottom: 6px;
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+  }
+  .recipient-seal {
+    font-family: var(--font-calligraphy); font-size: 15px;
+    color: var(--vermilion); border: 1px solid var(--vermilion);
+    padding: 2px 7px; border-radius: 3px;
+    letter-spacing: 0.1em;
+  }
+  .letter-sub-greeting {
+    font-family: var(--font-zh); font-size: 15.5px; letter-spacing: 0.28em;
+    color: var(--gold); font-weight: 400;
+  }
+  .letter-body {
+    font-size: 16.5px; line-height: 1.95; color: var(--ink);
+    text-align: justify; text-justify: inter-ideograph;
+  }
+  .letter-body p { margin-bottom: 18px; }
+  .quote-highlight {
+    background: linear-gradient(90deg, rgba(185, 56, 43, 0.06), rgba(176, 141, 87, 0.09), transparent);
+    border-left: 3.5px solid var(--vermilion);
+    padding: 14px 20px; margin: 20px 0;
+    border-radius: 0 6px 6px 0;
+  }
+  .quote-highlight .zh-quote {
+    font-family: var(--font-zh); font-size: 18.5px; font-weight: 500;
+    color: var(--vermilion); letter-spacing: 0.18em; margin-bottom: 4px;
+  }
+  .quote-highlight .en-subquote {
+    font-style: italic; color: var(--ink-soft); font-size: 14.5px;
+  }
+
+  .letter-sign-off {
+    margin-top: 36px; text-align: right; padding-right: 12px;
+  }
+  .sign-english {
+    font-style: italic; font-size: 17px; color: var(--ink-soft);
+    font-family: var(--font-serif);
+  }
+  .sign-calligraphy {
+    font-family: var(--font-calligraphy); font-size: 36px;
+    color: var(--vermilion); line-height: 1.2; margin-top: 4px;
+    letter-spacing: 0.15em; text-shadow: 0 0 10px var(--vermilion-glow);
+  }
+
+  /* Verses Tab */
+  .verse-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--paper-line);
+    border-radius: 6px; padding: 18px 22px; margin-bottom: 16px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+  .verse-card:hover {
+    transform: translateX(4px); border-color: var(--gold);
+  }
+  .verse-source {
+    font-size: 12px; letter-spacing: 0.25em; color: var(--gold);
+    text-transform: uppercase; font-family: var(--font-en-display); margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .verse-chinese {
+    font-family: var(--font-zh); font-size: 18px; font-weight: 500;
+    letter-spacing: 0.18em; color: var(--ink); margin-bottom: 8px;
+  }
+  .verse-english {
+    font-size: 14.5px; color: var(--ink-soft); font-style: italic;
+    line-height: 1.6;
+  }
+
+  /* Keepsake / Interactive Tab */
+  .keepsake-box {
+    text-align: center; padding: 20px 10px;
+  }
+  .keepsake-quote-display {
+    min-height: 110px; display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    border: 1px dashed var(--gold); border-radius: 6px;
+    padding: 24px 20px; margin-bottom: 24px;
+    background: rgba(176, 141, 87, 0.06);
+  }
+  .keepsake-main-text {
+    font-family: var(--font-zh); font-size: 21px; color: var(--ink);
+    letter-spacing: 0.2em; font-weight: 500; margin-bottom: 8px;
+    transition: opacity 0.25s ease;
+  }
+  .keepsake-sub-text {
+    font-style: italic; color: var(--ink-soft); font-size: 15px;
+    transition: opacity 0.25s ease;
+  }
+  .keepsake-actions {
+    display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;
+  }
+  .action-btn {
+    background: linear-gradient(135deg, var(--gold), #967440);
+    color: #fff; border: none; padding: 10px 22px;
+    border-radius: 25px; font-family: var(--font-zh); font-size: 13.5px;
+    letter-spacing: 0.15em; cursor: pointer; transition: all 0.3s ease;
+    box-shadow: 0 4px 14px var(--gold-glow);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px var(--gold-glow);
+  }
+  .action-btn.secondary {
+    background: transparent; border: 1px solid var(--paper-border);
+    color: var(--ink); box-shadow: none;
+  }
+  .action-btn.secondary:hover {
+    border-color: var(--vermilion); color: var(--vermilion);
+  }
+
+  /* Toast Notification */
+  .toast {
+    position: fixed; bottom: 35px; left: 50%; transform: translateX(-50%) translateY(20px);
+    background: var(--paper-card); color: var(--ink);
+    border: 1px solid var(--gold); border-radius: 25px;
+    padding: 10px 24px; font-size: 13.5px; font-family: var(--font-zh);
+    letter-spacing: 0.15em; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    z-index: 100; opacity: 0; pointer-events: none;
+    transition: all 0.35s cubic-bezier(0.2, 0.8, 0.3, 1);
+  }
+  .toast.show {
+    opacity: 1; transform: translateX(-50%) translateY(0);
+  }
+
+  /* Bottom Corners Decors */
+  .bottom-info-pill {
+    position: fixed; bottom: 22px; left: 30px; z-index: 10;
+    font-size: 12px; letter-spacing: 0.25em; color: var(--ink-faint);
+    font-family: var(--font-zh); pointer-events: none;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .bottom-right-seal {
+    position: fixed; bottom: 22px; right: 30px; z-index: 10;
+  }
+
+  /* Mobile Responsive Optimizations */
+  @media (max-width: 600px) {
+    .top-bar { padding: 0 16px; top: 16px; }
+    .bottom-info-pill { display: none; }
+    .bottom-right-seal { right: 16px; bottom: 16px; }
+    .letter-modal {
+      width: 95vw; max-height: 86vh;
+    }
+    .modal-scroll-area { padding: 22px 20px 20px; }
+    .modal-header { padding: 16px 18px 10px; }
+    .envelope-3d { width: 88vw; height: 224px; }
+    .phrase-zh { font-size: 22px; }
+    .letter-recipient { font-size: 23px; }
+  }
+</style>
+</head>
+<body data-theme="day">
+
+<div class="paper-grain"></div>
+<div class="ambient-bloom"></div>
+
+<!-- Interactive Falling Canvas -->
+<canvas id="petals"></canvas>
+
+<!-- Top Control Bar -->
+<header class="top-bar">
+  <div class="top-left-seal">
+    <div class="stamp-box" title="青竹">竹</div>
+    <div class="top-site-title">致 · 谢青竹</div>
+  </div>
+
+  <div class="top-controls">
+    <button class="icon-btn" id="audioToggle" aria-label="Toggle Melody">
+      <span id="audioIcon">🎵</span>
+      <div class="tooltip" id="audioTooltip">清音 · Ambient Harp</div>
+    </button>
+    <button class="icon-btn" id="themeToggle" aria-label="Toggle Theme">
+      <span id="themeIcon">☀️</span>
+      <div class="tooltip">素笺 / 月夜 (Day / Night)</div>
+    </button>
+  </div>
+</header>
+
+<!-- Rotating Poetic Ribbons (Smooth Crossfade) -->
+<div class="poetic-ribbon" id="phraseTop">
+  <div class="phrase-card active" id="topCard">
+    <div class="phrase-en" id="topEn">With All My Heart</div>
+    <div class="phrase-zh" id="topZh">见字如面 · 情深脉脉</div>
+    <div class="phrase-line"></div>
+  </div>
+</div>
+
+<!-- Center Stage with 3D Envelope -->
+<main class="stage">
+  <div class="envelope-scene" id="envelopeScene">
+    <div class="envelope-3d" id="envelope3D">
+      <div class="env-inside">
+        <div class="env-inside-pattern"></div>
+      </div>
+      <div class="letter-peek">
+        <div class="letter-peek-title">致 · 谢青竹</div>
+        <div class="letter-peek-stripes"></div>
+        <div class="letter-peek-stripes" style="width: 60%;"></div>
+        <div class="letter-peek-stripes" style="width: 45%;"></div>
+      </div>
+      <div class="env-folds"></div>
+      <div class="env-top-flap" id="envTopFlap"></div>
+      <div class="wax-seal" id="waxSeal">
+        <div class="wax-seal-inner">
+          <span>竹</span>
+        </div>
+      </div>
+    </div>
+    <div class="envelope-hint">
+      <span class="hint-icon">✦</span>
+      <span>启封信笺 · Open Letter</span>
+      <span class="hint-icon">✦</span>
+    </div>
+  </div>
+</main>
+
+<div class="poetic-ribbon" id="phraseBottom">
+  <div class="phrase-card active" id="botCard">
+    <div class="phrase-en" id="botEn">Forever & Always</div>
+    <div class="phrase-zh" id="botZh">山水兼程 · 皆落眼中</div>
+    <div class="phrase-line"></div>
+  </div>
+</div>
+
+<!-- Bottom Status / Corners -->
+<div class="bottom-info-pill">
+  <span>✦ 挥毫拂风 · 触屏绽花</span>
+</div>
+<div class="bottom-right-seal">
+  <div class="stamp-box" style="width: 36px; height: 36px; font-size: 18px;" title="长情">情</div>
+</div>
+
+<!-- Expanded Reading Modal -->
+<div class="letter-backdrop" id="letterBackdrop"></div>
+<div class="letter-modal" id="letterModal" role="dialog" aria-modal="true">
+  <div class="modal-ribbon"></div>
+  <div class="modal-header">
+    <div class="modal-tabs">
+      <button class="tab-btn active" data-tab="letter">情笺 · The Letter</button>
+      <button class="tab-btn" data-tab="verses">诗韵 · Verses</button>
+      <button class="tab-btn" data-tab="keepsake">心语 · Keepsake</button>
+    </div>
+    <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close Letter">×</button>
+  </div>
+
+  <div class="modal-scroll-area">
+    <!-- Tab 1: The Heartfelt Letter -->
+    <div class="tab-page active" id="tab-letter">
+      <div class="letter-salutation-wrap">
+        <div class="letter-recipient">
+          <span>致 · 谢青竹</span>
+          <span class="recipient-seal">青竹亲启</span>
+        </div>
+        <div class="letter-sub-greeting">见字如晤 · 顺遂无虞</div>
+      </div>
+
+      <div class="letter-body">
+        <p>山川辽阔，风月无边。有些心绪深重细腻，寻常言语总嫌浅薄，于是我让漫天纷飞的落花代为诉说——它们一瓣一瓣悠悠飘落，正如我对你的思念，不曾有过停歇。</p>
+
+        <div class="quote-highlight">
+          <div class="zh-quote">山有木兮木有枝，心悦君兮君可知。</div>
+          <div class="en-subquote">Trees have branches and mountains have trees; my heart longs for you, did you know?</div>
+        </div>
+
+        <p>你是清晨那一抹温柔静谧的晨曦，是我每个寻常日子里最不由自主的微笑。如果可以，我想在漫天每一片青竹与飞花上，都写满你的名字。</p>
+
+        <div class="quote-highlight">
+          <div class="zh-quote">往后余生，风雪是你，平淡是你，目光所至，皆是你。</div>
+          <div class="en-subquote">For all the days to come, in storms and gentle peace, wherever my gaze turns, there you are.</div>
+        </div>
+
+        <p>愿你岁岁常欢愉，万事皆胜意。不论晨昏与四季，情深长留，初心未负。</p>
+      </div>
+
+      <div class="letter-sign-off">
+        <div class="sign-english">Forever & always yours,</div>
+        <div class="sign-calligraphy">念你之人</div>
+      </div>
+    </div>
+
+    <!-- Tab 2: Classic Verses Collection -->
+    <div class="tab-page" id="tab-verses">
+      <div class="verse-card">
+        <div class="verse-source">《诗经·邶风·击鼓》</div>
+        <div class="verse-chinese">死生契阔，与子成说。执子之手，与子偕老。</div>
+        <div class="verse-english">"In life and death, we pledged our vows; I hold your hand, and grow old with you."</div>
+      </div>
+      <div class="verse-card">
+        <div class="verse-source">元稹 · 《离思五首·其四》</div>
+        <div class="verse-chinese">曾经沧海难为水，除却巫山不是云。</div>
+        <div class="verse-english">"Having seen the vast ocean, no other water can compare; having beheld the clouds of Mount Wu, no other mist is true cloud."</div>
+      </div>
+      <div class="verse-card">
+        <div class="verse-source">纳兰性德 · 《浣溪沙》</div>
+        <div class="verse-chinese">赌书消得泼茶香，当时只道是寻常。</div>
+        <div class="verse-english">"Contesting verses till spilled tea perfumed the quiet room; what once seemed ordinary now glows timeless in my memory."</div>
+      </div>
+      <div class="verse-card">
+        <div class="verse-source">仓央嘉措 · 《情诗》</div>
+        <div class="verse-chinese">世间安得双全法，不负如来不负卿。</div>
+        <div class="verse-english">"Could there exist in this realm a sacred path that fulfills both the heavens and my devotion to you."</div>
+      </div>
+    </div>
+
+    <!-- Tab 3: Keepsake & Generator -->
+    <div class="tab-page" id="tab-keepsake">
+      <div class="keepsake-box">
+        <div class="keepsake-quote-display">
+          <div class="keepsake-main-text" id="keepsakeText">“春水初生，春林初盛，春风十里，不如你。”</div>
+          <div class="keepsake-sub-text" id="keepsakeSub">— 愿岁岁年年，深情共许 —</div>
+        </div>
+        <div class="keepsake-actions">
+          <button class="action-btn" id="nextQuoteBtn">
+            <span>🌸</span>
+            <span>抽取心动誓言</span>
+          </button>
+          <button class="action-btn secondary" id="copyLetterBtn">
+            <span>📋</span>
+            <span>复制信笺全文</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast">已复制信笺内容到剪贴板</div>
+
+<script>
+/* =========================================================
+   1. HIGH-PRECISION 3D FLOWER & BAMBOO CANVAS ENGINE
+   ========================================================= */
+const canvas = document.getElementById('petals');
+const ctx = canvas.getContext('2d');
+let W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+function resizeCanvas() {
+  W = window.innerWidth;
+  H = window.innerHeight;
+  canvas.width = W * dpr;
+  canvas.height = H * dpr;
+  canvas.style.width = W + 'px';
+  canvas.style.height = H + 'px';
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+// Color Palettes for Day and Night Modes
+const PALETTES_DAY = {
+  petals: [
+    ['#fcd5ce', '#f8ad9d'], // Peach blush
+    ['#ffe5ec', '#ffb3c6'], // Sakura blossom
+    ['#f8edeb', '#fcd5ce'], // Pale petal
+    ['#e07a5f', '#b9382b'], // Cinnabar accent
+  ],
+  bamboo: [
+    ['#8cb369', '#4d7c3b'], // Tender green bamboo
+    ['#a4c382', '#5b824a'],
+  ],
+  sparkles: ['#ffd166', '#f4a261', '#fff4cc'],
+};
+
+const PALETTES_NIGHT = {
+  petals: [
+    ['#fbc4ab', '#e07a5f'], // Luminous rose
+    ['#e8dff5', '#ceb5b7'], // Moonlit blossom
+    ['#ffcad4', '#d08c9f'], // Midnight pink
+    ['#e74c3c', '#962d22'], // Crimson
+  ],
+  bamboo: [
+    ['#5ea87a', '#245239'], // Bioluminescent jade
+    ['#7acb98', '#38734f'],
+  ],
+  sparkles: ['#ffd166', '#80ed99', '#90e0ef'],
+};
+
+// Physics & Wind state
+const mouse = { x: -1000, y: -1000, vx: 0, vy: 0, lastX: 0, lastY: 0, active: false };
+let ambientWind = { x: 0.35, y: 0.85, targetX: 0.35 };
+
+window.addEventListener('mousemove', e => {
+  mouse.vx = (e.clientX - mouse.lastX) * 0.2;
+  mouse.vy = (e.clientY - mouse.lastY) * 0.2;
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+  mouse.lastX = e.clientX;
+  mouse.lastY = e.clientY;
+  mouse.active = true;
+});
+window.addEventListener('mouseleave', () => { mouse.active = false; });
+window.addEventListener('touchmove', e => {
+  if (e.touches.length > 0) {
+    const t = e.touches[0];
+    mouse.vx = (t.clientX - mouse.lastX) * 0.2;
+    mouse.vy = (t.clientY - mouse.lastY) * 0.2;
+    mouse.x = t.clientX;
+    mouse.y = t.clientY;
+    mouse.lastX = t.clientX;
+    mouse.lastY = t.clientY;
+    mouse.active = true;
+  }
+}, { passive: true });
+
+// Particle Types:
+// 0: Sakura Petal (single curved fluttering petal)
+// 1: Bamboo Leaf (青竹 leaves, slender & tumbling)
+// 2: Whole Blossom (5-petal Sakura flower)
+// 3: Glowing Starlight Sparkle / Firefly
+class FallingParticle {
+  constructor(seed = false, isBurst = false) {
+    this.isBurst = isBurst;
+    this.life = isBurst ? 1 : 999;
+    this.reset(seed);
+  }
+
+  reset(seed = false) {
+    this.x = Math.random() * W;
+    this.y = seed ? Math.random() * H : -40 - Math.random() * 60;
+    this.z = 0.5 + Math.random() * 0.9; // 3D depth layer
+
+    // Randomize particle type with weighted distribution
+    const r = Math.random();
+    if (r < 0.45) this.type = 0;      // Petal
+    else if (r < 0.70) this.type = 1; // Bamboo Leaf (青竹)
+    else if (r < 0.85) this.type = 2; // Whole Flower
+    else this.type = 3;               // Firefly / Stardust
+
+    this.size = (this.type === 2 ? 14 : this.type === 1 ? 16 : 9) + Math.random() * 8;
+    this.size *= this.z;
+
+    this.speedY = (0.55 + Math.random() * 1.1) * this.z;
+    this.speedX = (Math.random() - 0.5) * 0.4;
+    this.amp = 18 + Math.random() * 32;
+    this.freq = 0.4 + Math.random() * 0.7;
+    this.phase = Math.random() * Math.PI * 2;
+
+    // 3D rotations (pitch, yaw, roll)
+    this.rotX = Math.random() * Math.PI * 2;
+    this.rotY = Math.random() * Math.PI * 2;
+    this.rotZ = Math.random() * Math.PI * 2;
+    this.vRotX = (Math.random() - 0.5) * 0.04;
+    this.vRotY = (Math.random() - 0.5) * 0.035;
+    this.vRotZ = (Math.random() - 0.5) * 0.025;
+
+    this.alpha = (0.55 + Math.random() * 0.4) * (this.type === 3 ? 0.9 : 1);
+    this.time = Math.random() * 1000;
+
+    // Burst temporary dynamics
+    this.burstVx = 0;
+    this.burstVy = 0;
+  }
+
+  update(isNight) {
+    this.time += 0.016;
+
+    // Fireflies hover/float upwards and weave gently
+    let targetVy = this.type === 3
+      ? (-0.25 + Math.sin(this.time * 2.2) * 0.6)
+      : (this.speedY * ambientWind.y);
+
+    let targetVx = ambientWind.x + Math.sin(this.time * this.freq + this.phase) * (this.type === 3 ? 1.2 : 0.8);
+
+    if (mouse.active) {
+      const dx = this.x - mouse.x;
+      const dy = this.y - mouse.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      const influenceRadius = 140;
+      if (dist < influenceRadius && dist > 1) {
+        const force = (1 - dist / influenceRadius) * 4;
+        this.burstVx += (dx / dist) * force + mouse.vx * 0.3;
+        this.burstVy += (dy / dist) * force + mouse.vy * 0.3;
+        this.vRotX += (Math.random() - 0.5) * 0.08;
+        this.vRotZ += (Math.random() - 0.5) * 0.08;
+      }
+    }
+
+    // Apply drag to burst velocity
+    this.burstVx *= 0.92;
+    this.burstVy *= 0.92;
+
+    this.x += targetVx + this.burstVx;
+    this.y += targetVy + this.burstVy;
+
+    this.rotX += this.vRotX;
+    this.rotY += this.vRotY;
+    this.rotZ += this.vRotZ;
+
+    if (this.isBurst) {
+      this.life -= 0.008;
+    }
+
+    // Reset when off bottom or far sides
+    if (this.y > H + 50 || this.x < -60 || this.x > W + 60 || (this.type === 3 && this.y < -50)) {
+      if (this.isBurst) {
+        this.life = -1; // marked for removal
+      } else {
+        this.reset(false);
+      }
+    }
+  }
+
+  draw(isNight) {
+    if (this.life <= 0) return;
+
+    ctx.save();
+    ctx.translate(this.x, this.y);
+    ctx.rotate(this.rotZ);
+
+    // 3D projection foreshortening (tumbling effect)
+    const scaleX = Math.cos(this.rotY);
+    const scaleY = Math.cos(this.rotX);
+    ctx.scale(Math.abs(scaleX) > 0.08 ? scaleX : 0.08, Math.abs(scaleY) > 0.08 ? scaleY : 0.08);
+
+    const isUnderside = scaleX * scaleY < 0;
+    const pSet = isNight ? PALETTES_NIGHT : PALETTES_DAY;
+    const currentAlpha = this.alpha * (this.isBurst ? Math.max(0, this.life) : 1) * (isUnderside ? 0.75 : 1);
+    ctx.globalAlpha = Math.max(0, Math.min(1, currentAlpha));
+
+    const s = this.size;
+
+    if (this.type === 0) {
+      // 🌸 Single Sakura Petal
+      const cols = pSet.petals[Math.floor(this.time) % pSet.petals.length];
+      const g = ctx.createRadialGradient(0, -s * 0.2, 0, 0, 0, s);
+      g.addColorStop(0, cols[0]);
+      g.addColorStop(1, cols[1]);
+      ctx.fillStyle = g;
+
+      ctx.beginPath();
+      ctx.moveTo(0, -s);
+      ctx.bezierCurveTo(s * 0.7, -s * 0.8, s * 0.85, s * 0.2, 0, s);
+      ctx.bezierCurveTo(-s * 0.85, s * 0.2, -s * 0.7, -s * 0.8, 0, -s);
+      ctx.fill();
+
+      // Delicate vein line
+      ctx.strokeStyle = isNight ? 'rgba(255,255,255,0.22)' : 'rgba(185,56,43,0.18)';
+      ctx.lineWidth = 0.8;
+      ctx.beginPath();
+      ctx.moveTo(0, s * 0.85);
+      ctx.lineTo(0, -s * 0.4);
+      ctx.stroke();
+
+    } else if (this.type === 1) {
+      // 🎋 Bamboo Leaf (青竹)
+      const cols = pSet.bamboo[Math.floor(this.time) % pSet.bamboo.length];
+      const g = ctx.createLinearGradient(0, -s * 1.5, 0, s * 1.5);
+      g.addColorStop(0, cols[0]);
+      g.addColorStop(1, cols[1]);
+      ctx.fillStyle = g;
+
+      ctx.beginPath();
+      ctx.moveTo(0, -s * 1.4);
+      ctx.bezierCurveTo(s * 0.35, -s * 0.5, s * 0.35, s * 0.5, 0, s * 1.4);
+      ctx.bezierCurveTo(-s * 0.35, s * 0.5, -s * 0.35, -s * 0.5, 0, -s * 1.4);
+      ctx.fill();
+
+      // Leaf midrib
+      ctx.strokeStyle = isNight ? 'rgba(180,245,200,0.35)' : 'rgba(40,80,35,0.25)';
+      ctx.lineWidth = 0.7;
+      ctx.beginPath();
+      ctx.moveTo(0, -s * 1.2);
+      ctx.lineTo(0, s * 1.2);
+      ctx.stroke();
+
+    } else if (this.type === 2) {
+      // 🌺 Whole 5-Petal Flower
+      const cols = pSet.petals[0];
+      const count = 5;
+      for (let i = 0; i < count; i++) {
+        ctx.save();
+        ctx.rotate((i * Math.PI * 2) / count);
+        const g = ctx.createRadialGradient(0, 0, 0, s * 0.5, 0, s * 0.7);
+        g.addColorStop(0, cols[1]);
+        g.addColorStop(1, cols[0]);
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.ellipse(s * 0.45, 0, s * 0.45, s * 0.22, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      // Golden stamen center
+      ctx.fillStyle = isNight ? '#ffd166' : '#d8ba82';
+      ctx.beginPath();
+      ctx.arc(0, 0, s * 0.18, 0, Math.PI * 2);
+      ctx.fill();
+
+    } else {
+      // ✨ Glowing Firefly / Stardust
+      const rad = 2 + Math.sin(this.time * 4) * 1.5;
+      const g = ctx.createRadialGradient(0, 0, 0, 0, 0, rad * 3);
+      g.addColorStop(0, isNight ? '#fff4cc' : '#ffd166');
+      g.addColorStop(0.4, isNight ? 'rgba(212,175,110,0.5)' : 'rgba(244,162,97,0.4)');
+      g.addColorStop(1, 'transparent');
+      ctx.fillStyle = g;
+      ctx.beginPath();
+      ctx.arc(0, 0, rad * 3, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    ctx.restore();
+  }
+}
+
+// Particle Count scaled for performance
+const PARTICLE_COUNT = Math.min(85, Math.floor(window.innerWidth / 15));
+const particles = Array.from({ length: PARTICLE_COUNT }, () => new FallingParticle(true, false));
+
+// Periodic gentle breeze gusts
+setInterval(() => {
+  ambientWind.targetX = 0.2 + (Math.random() - 0.45) * 1.2;
+}, 5000);
+
+function animate() {
+  ctx.clearRect(0, 0, W, H);
+  const isNight = document.body.getAttribute('data-theme') === 'night';
+
+  ambientWind.x += (ambientWind.targetX - ambientWind.x) * 0.02;
+
+  for (let i = particles.length - 1; i >= 0; i--) {
+    const p = particles[i];
+    p.update(isNight);
+    if (p.isBurst && p.life <= 0) {
+      particles.splice(i, 1);
+    } else {
+      p.draw(isNight);
+    }
+  }
+
+  requestAnimationFrame(animate);
+}
+requestAnimationFrame(animate);
+
+// Click or Touch anywhere to bloom flowers!
+function triggerBurst(x, y) {
+  const burstCount = 18;
+  for (let i = 0; i < burstCount; i++) {
+    const p = new FallingParticle(false, true);
+    p.x = x;
+    p.y = y;
+    const angle = Math.random() * Math.PI * 2;
+    const spd = 3 + Math.random() * 6;
+    p.burstVx = Math.cos(angle) * spd;
+    p.burstVy = Math.sin(angle) * spd - 1.5;
+    particles.push(p);
+  }
+
+  // Play gentle chime
+  playMelodyNote();
+}
+
+window.addEventListener('click', e => {
+  // Avoid bursting if clicking inside modal or control buttons
+  if (e.target.closest('.letter-modal') || e.target.closest('.top-controls') || e.target.closest('.tab-btn')) return;
+  triggerBurst(e.clientX, e.clientY);
+});
+
+/* =========================================================
+   2. GENERATIVE WEB AUDIO ENGINE (ZERO EXTERNAL ASSETS)
+   ========================================================= */
+let audioCtx = null;
+let isAudioActive = false;
+let ambientTimer = null;
+
+// Traditional Chinese Pentatonic Frequencies (D, E, G, A, B notes in multiple octaves)
+const PENTATONIC_SCALE = [
+  293.66, 329.63, 392.00, 440.00, 493.88, // D4, E4, G4, A4, B4
+  587.33, 659.25, 783.99, 880.00, 987.77, // D5, E5, G5, A5, B5
+  1174.66                                  // D6
+];
+
+function initAudio() {
+  if (!audioCtx) {
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    audioCtx = new AudioContextClass();
+  }
+  if (audioCtx.state === 'suspended') {
+    audioCtx.resume();
+  }
+}
+
+// Synthesize an ethereal plucked Guzheng/Harp note
+function playMelodyNote(freq = null) {
+  if (!isAudioActive) return;
+  initAudio();
+  if (!audioCtx) return;
+
+  const now = audioCtx.currentTime;
+  const f = freq || PENTATONIC_SCALE[Math.floor(Math.random() * PENTATONIC_SCALE.length)];
+
+  const osc1 = audioCtx.createOscillator();
+  const osc2 = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  const filter = audioCtx.createBiquadFilter();
+
+  osc1.type = 'sine';
+  osc1.frequency.setValueAtTime(f, now);
+
+  osc2.type = 'triangle';
+  osc2.frequency.setValueAtTime(f * 2, now); // Harmonic sheen
+
+  filter.type = 'lowpass';
+  filter.frequency.setValueAtTime(f * 3.5, now);
+  filter.frequency.exponentialRampToValueAtTime(f * 0.8, now + 1.8);
+
+  // Guzheng-like quick soft attack and resonant long decay
+  gain.gain.setValueAtTime(0.001, now);
+  gain.gain.linearRampToValueAtTime(0.16, now + 0.02);
+  gain.gain.exponentialRampToValueAtTime(0.0001, now + 2.4);
+
+  osc1.connect(filter);
+  osc2.connect(filter);
+  filter.connect(gain);
+  gain.connect(audioCtx.destination);
+
+  osc1.start(now);
+  osc2.start(now);
+  osc1.stop(now + 2.5);
+  osc2.stop(now + 2.5);
+}
+
+// Sparkling arpeggio on envelope opening
+function playUnsealSound() {
+  initAudio();
+  if (!audioCtx) return;
+
+  const chords = [587.33, 659.25, 783.99, 880.00, 1174.66];
+  chords.forEach((note, idx) => {
+    setTimeout(() => {
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(note, now);
+      gain.gain.setValueAtTime(0.001, now);
+      gain.gain.linearRampToValueAtTime(0.12, now + 0.03);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.6);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 1.7);
+    }, idx * 110);
+  });
+}
+
+// Ambient Generative Soundscape (every few seconds plays meditative notes)
+function startAmbientGenerative() {
+  if (ambientTimer) clearInterval(ambientTimer);
+  ambientTimer = setInterval(() => {
+    if (isAudioActive && Math.random() < 0.75) {
+      playMelodyNote();
+      if (Math.random() < 0.4) {
+        setTimeout(() => playMelodyNote(), 400 + Math.random() * 300);
+      }
+    }
+  }, 4200);
+}
+
+const audioBtn = document.getElementById('audioToggle');
+const audioIcon = document.getElementById('audioIcon');
+const audioTooltip = document.getElementById('audioTooltip');
+
+audioBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  initAudio();
+  isAudioActive = !isAudioActive;
+  if (isAudioActive) {
+    audioBtn.classList.add('active');
+    audioIcon.textContent = '🎶';
+    audioTooltip.textContent = '音乐播放中 · Playing';
+    startAmbientGenerative();
+    playMelodyNote(587.33);
+  } else {
+    audioBtn.classList.remove('active');
+    audioIcon.textContent = '🎵';
+    audioTooltip.textContent = '开启音律 · Play Sound';
+    if (ambientTimer) clearInterval(ambientTimer);
+  }
+});
+
+/* =========================================================
+   3. THEME TOGGLE (DAY & NIGHT CELESTIAL STYLES)
+   ========================================================= */
+const themeBtn = document.getElementById('themeToggle');
+const themeIcon = document.getElementById('themeIcon');
+
+themeBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  const currentTheme = document.body.getAttribute('data-theme');
+  const nextTheme = currentTheme === 'night' ? 'day' : 'night';
+  document.body.setAttribute('data-theme', nextTheme);
+  themeIcon.textContent = nextTheme === 'night' ? '🌙' : '☀️';
+
+  // Chime on theme change
+  if (isAudioActive) playMelodyNote(nextTheme === 'night' ? 392.00 : 783.99);
+});
+
+/* =========================================================
+   4. ROTATING POETIC PHRASES (SMOOTH CROSS-FADE)
+   ========================================================= */
+const POETIC_VERSES = [
+  { en: 'With All My Heart', zh: '见字如面 · 情深脉脉' },
+  { en: 'Xie QingZhu', zh: '风摇青竹 · 意在心头' },
+  { en: 'Forever & Always', zh: '山水兼程 · 皆落眼中' },
+  { en: 'My Dearest', zh: '吾之所向 · 唯你而已' },
+  { en: 'Morning & Twilight', zh: '朝暮与共 · 行至白头' },
+  { en: 'Starlight & Dew', zh: '愿逐月华 · 照君欢颜' }
+];
+
+let phraseIndex = 0;
+const topCard = document.getElementById('topCard');
+const botCard = document.getElementById('botCard');
+const topEn = document.getElementById('topEn');
+const topZh = document.getElementById('topZh');
+const botEn = document.getElementById('botEn');
+const botZh = document.getElementById('botZh');
+
+function updatePhrases() {
+  // Fade out
+  topCard.classList.remove('active');
+  botCard.classList.remove('active');
+
+  setTimeout(() => {
+    phraseIndex = (phraseIndex + 1) % POETIC_VERSES.length;
+    const topData = POETIC_VERSES[phraseIndex];
+    const botData = POETIC_VERSES[(phraseIndex + 1) % POETIC_VERSES.length];
+
+    topEn.textContent = topData.en;
+    topZh.textContent = topData.zh;
+    botEn.textContent = botData.en;
+    botZh.textContent = botData.zh;
+
+    topCard.classList.add('active');
+    botCard.classList.add('active');
+  }, 1000);
+}
+setInterval(updatePhrases, 5400);
+
+/* =========================================================
+   5. 3D ENVELOPE OPENING & LETTER MODAL CEREMONY
+   ========================================================= */
+const envelopeScene = document.getElementById('envelopeScene');
+const envelope3D = document.getElementById('envelope3D');
+const envTopFlap = document.getElementById('envTopFlap');
+const waxSeal = document.getElementById('waxSeal');
+const letterBackdrop = document.getElementById('letterBackdrop');
+const letterModal = document.getElementById('letterModal');
+const modalCloseBtn = document.getElementById('modalCloseBtn');
+
+let isLetterOpen = false;
+
+// 3D Parallax Tilt with Mouse Position
+window.addEventListener('mousemove', e => {
+  if (isLetterOpen) return;
+  const cx = window.innerWidth / 2;
+  const cy = window.innerHeight / 2;
+  const dx = (e.clientX - cx) / cx;
+  const dy = (e.clientY - cy) / cy;
+
+  envelope3D.style.transform = `rotateY(${dx * 12}deg) rotateX(${-dy * 10}deg) translateZ(10px)`;
+});
+
+function openLetter() {
+  if (isLetterOpen) return;
+  isLetterOpen = true;
+
+  // Unseal sound
+  playUnsealSound();
+
+  // Burst petals at seal position
+  const rect = waxSeal.getBoundingClientRect();
+  triggerBurst(rect.left + rect.width / 2, rect.top + rect.height / 2);
+
+  // 1. Fold flap open
+  envTopFlap.style.transform = 'rotateX(180deg)';
+  envTopFlap.style.zIndex = '1';
+  waxSeal.style.transform = 'translateX(-50%) scale(0.2)';
+  waxSeal.style.opacity = '0';
+
+  // 2. Open letter modal with smooth expansion
+  setTimeout(() => {
+    letterBackdrop.classList.add('active');
+    letterModal.classList.add('active');
+  }, 450);
+}
+
+function closeLetter() {
+  if (!isLetterOpen) return;
+  isLetterOpen = false;
+
+  letterModal.classList.remove('active');
+  letterBackdrop.classList.remove('active');
+
+  setTimeout(() => {
+    envTopFlap.style.transform = 'rotateX(0deg)';
+    envTopFlap.style.zIndex = '5';
+    waxSeal.style.transform = 'translateX(-50%) scale(1)';
+    waxSeal.style.opacity = '1';
+  }, 350);
+}
+
+envelopeScene.addEventListener('click', e => {
+  e.stopPropagation();
+  openLetter();
+});
+modalCloseBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  closeLetter();
+});
+letterBackdrop.addEventListener('click', closeLetter);
+window.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLetter();
+});
+
+/* =========================================================
+   6. MODAL TABS NAVIGATION
+   ========================================================= */
+const tabButtons = document.querySelectorAll('.tab-btn');
+const tabPages = document.querySelectorAll('.tab-page');
+
+tabButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const targetTab = btn.getAttribute('data-tab');
+
+    tabButtons.forEach(b => b.classList.remove('active'));
+    tabPages.forEach(p => p.classList.remove('active'));
+
+    btn.classList.add('active');
+    document.getElementById(`tab-${targetTab}`).classList.add('active');
+
+    if (isAudioActive) playMelodyNote(659.25);
+  });
+});
+
+/* =========================================================
+   7. KEEPSAKE & QUOTE GENERATOR
+   ========================================================= */
+const KEEPSAKE_QUOTES = [
+  { main: '“春水初生，春林初盛，春风十里，不如你。”', sub: '— 愿岁岁年年，深情共许 —' },
+  { main: '“愿我如星君如月，夜夜流光相皎洁。”', sub: '— 范成大 · 《车遥遥篇》 —' },
+  { main: '“我见青山多妩媚，料青山见我应如是。”', sub: '— 辛弃疾 · 眉目皆是你 —' },
+  { main: '“晓看天色暮看云，行也思君，坐也思君。”', sub: '— 唐寅 · 心之所系 —' },
+  { main: '“换我心，为你心，始知相忆深。”', sub: '— 顾敻 · 眷念入骨 —' },
+  { main: '“青竹拂清风，明月照深情。”', sub: '— 致谢青竹 · 永伴身侧 —' }
+];
+
+let keepsakeIdx = 0;
+const nextQuoteBtn = document.getElementById('nextQuoteBtn');
+const keepsakeText = document.getElementById('keepsakeText');
+const keepsakeSub = document.getElementById('keepsakeSub');
+const copyLetterBtn = document.getElementById('copyLetterBtn');
+const toast = document.getElementById('toast');
+
+nextQuoteBtn.addEventListener('click', () => {
+  keepsakeIdx = (keepsakeIdx + 1) % KEEPSAKE_QUOTES.length;
+  keepsakeText.style.opacity = 0;
+  keepsakeSub.style.opacity = 0;
+  setTimeout(() => {
+    keepsakeText.textContent = KEEPSAKE_QUOTES[keepsakeIdx].main;
+    keepsakeSub.textContent = KEEPSAKE_QUOTES[keepsakeIdx].sub;
+    keepsakeText.style.opacity = 1;
+    keepsakeSub.style.opacity = 1;
+  }, 250);
+
+  if (isAudioActive) playMelodyNote(783.99);
+});
+
+function showToast(msg) {
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2600);
+}
+
+copyLetterBtn.addEventListener('click', () => {
+  const fullLetter = `致 · 谢青竹：\n见字如晤。\n山川辽阔，风月无边。有些心绪深重细腻，寻常言语总嫌浅薄，于是我让漫天纷飞的落花代为诉说——它们一瓣一瓣悠悠飘落，正如我对你的思念，不曾有过停歇。\n\n山有木兮木有枝，心悦君兮君可知。\n\n你是清晨那一抹温柔静谧的晨曦，是我每个寻常日子里最不由自主的微笑。如果可以，我想在漫天每一片青竹与飞花上，都写满你的名字。\n\n往后余生，风雪是你，平淡是你，目光所至，皆是你。\n\nForever & always yours,\n念你之人`;
+  navigator.clipboard.writeText(fullLetter).then(() => {
+    showToast('✨ 已成功复制信笺全文到剪贴板');
+  }).catch(() => {
+    showToast('已选中信笺文字，请直接复制');
+  });
+
+  if (isAudioActive) playMelodyNote(880.00);
+});
+</script>
+</body>
+</html>
