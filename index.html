@@ -96,13 +96,13 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   }
 
-  /* Ambient moon/sun bloom */
+  /* Ambient moon/sun bloom with parallax transition */
   .ambient-bloom {
     position: fixed; top: -90px; right: 10%; width: 450px; height: 450px;
     border-radius: 50%;
     background: radial-gradient(circle, var(--gold-glow), transparent 70%);
     pointer-events: none; z-index: 1; opacity: 0.55;
-    transition: all 1s ease;
+    transition: background 1s ease, opacity 1s ease;
     filter: blur(40px);
   }
   [data-theme="night"] .ambient-bloom {
@@ -163,9 +163,9 @@
   .icon-btn.active {
     color: var(--vermilion); border-color: var(--vermilion);
     box-shadow: 0 0 14px var(--vermilion-glow);
-    animation: musicPulse 2s infinite ease-in-out;
+    animation: gentlePulseBtn 2.2s infinite ease-in-out;
   }
-  @keyframes musicPulse {
+  @keyframes gentlePulseBtn {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.07); }
   }
@@ -241,7 +241,6 @@
     transition: transform 0.6s cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 0.6s ease;
   }
   .envelope-scene:hover .envelope-3d {
-    transform: translateY(-8px) rotateX(4deg) rotateY(-2deg);
     box-shadow: 0 40px 85px -15px var(--env-shadow), 0 0 35px var(--gold-glow);
   }
 
@@ -662,7 +661,7 @@
 <body data-theme="day">
 
 <div class="paper-grain"></div>
-<div class="ambient-bloom"></div>
+<div class="ambient-bloom" id="ambientBloom"></div>
 
 <!-- Interactive Falling Canvas -->
 <canvas id="petals"></canvas>
@@ -675,6 +674,11 @@
   </div>
 
   <div class="top-controls">
+    <!-- Gyroscope / Tilt Sensor Button -->
+    <button class="icon-btn" id="gyroToggle" aria-label="Toggle Gyroscope">
+      <span id="gyroIcon">🧭</span>
+      <div class="tooltip" id="gyroTooltip">陀螺仪 · 重力感应</div>
+    </button>
     <!-- Language Switcher Button -->
     <button class="icon-btn" id="langToggle" aria-label="Switch Language">
       <span id="langText">EN</span>
@@ -741,7 +745,7 @@
 
 <!-- Bottom Status / Corners -->
 <div class="bottom-info-pill">
-  <span id="bottomHintText">✦ 挥毫拂风 · 触屏绽花</span>
+  <span id="bottomHintText">✦ 触屏绽花 · 倾斜手机引落花 ✦</span>
 </div>
 <div class="bottom-right-seal">
   <div class="stamp-box" style="width: 36px; height: 36px; font-size: 18px;" id="cornerStampRight" title="长情">情</div>
@@ -822,9 +826,12 @@ const I18N = {
     siteTitle: '致 · 谢青竹',
     peekTitle: '致 · 谢青竹',
     envHint: '启封信笺 · Open Letter',
-    bottomHint: '✦ 挥毫拂风 · 触屏绽花',
+    bottomHint: '✦ 触屏绽花 · 倾斜手机引落花 ✦',
     langText: 'EN',
     langTooltip: 'Switch to English (切换至英文)',
+    gyroTooltip: '陀螺仪 · 重力感应',
+    toastGyro: '✨ 陀螺仪重力感应已开启',
+    toastGyroOff: '已暂停陀螺仪感应',
     audioNormal: '清音 · Ambient Harp',
     audioPlaying: '音乐播放中 · Playing',
     audioMuted: '开启音律 · Play Sound',
@@ -903,9 +910,12 @@ const I18N = {
     siteTitle: 'To · Xie Qingzhu',
     peekTitle: 'To · Xie Qingzhu',
     envHint: 'Unseal the Letter · With Love',
-    bottomHint: '✦ Stir the breeze · Tap to bloom blossoms ✦',
+    bottomHint: '✦ Tap to bloom · Tilt device to guide petals ✦',
     langText: '中',
     langTooltip: 'Switch to Chinese (切换至中文)',
+    gyroTooltip: 'Gyroscope · Tilt Motion',
+    toastGyro: '✨ Gyroscope motion active!',
+    toastGyroOff: 'Gyroscope tilt paused',
     audioNormal: 'Melody · Ambient Harp',
     audioPlaying: 'Melody Playing · Sound On',
     audioMuted: 'Play Melody · Sound Off',
@@ -992,6 +1002,7 @@ function applyLanguage(lang) {
   document.getElementById('siteTitle').textContent = d.siteTitle;
   document.getElementById('langText').textContent = d.langText;
   document.getElementById('langTooltip').textContent = d.langTooltip;
+  document.getElementById('gyroTooltip').textContent = d.gyroTooltip;
   document.getElementById('themeTooltip').textContent = d.themeTooltip;
 
   // Audio tooltip
@@ -1043,7 +1054,81 @@ function applyLanguage(lang) {
 }
 
 /* =========================================================
-   2. HIGH-PRECISION 3D FLOWER & BAMBOO CANVAS ENGINE
+   2. GYROSCOPE & DEVICE ORIENTATION SENSOR ENGINE
+   ========================================================= */
+const gyro = {
+  supported: false,
+  active: false,
+  hasData: false,
+  targetGamma: 0,
+  targetBeta: 0,
+  gamma: 0,
+  beta: 0
+};
+
+const gyroBtn = document.getElementById('gyroToggle');
+const ambientBloom = document.getElementById('ambientBloom');
+
+function handleOrientation(e) {
+  if (e.gamma === null && e.beta === null) return;
+  gyro.hasData = true;
+
+  // Normalise angles:
+  // gamma: roll (left-to-right tilt) [-50, 50]
+  // beta: pitch (front-to-back tilt) normalized with 45deg upright resting angle [-45, 45]
+  const rawGamma = Math.max(-50, Math.min(50, e.gamma || 0));
+  const rawBeta = Math.max(0, Math.min(90, e.beta || 45)) - 45;
+
+  gyro.targetGamma = rawGamma;
+  gyro.targetBeta = rawBeta;
+}
+
+function enableGyro(showNotification = false) {
+  if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+    // iOS 13+ permission request
+    DeviceOrientationEvent.requestPermission()
+      .then(state => {
+        if (state === 'granted') {
+          window.addEventListener('deviceorientation', handleOrientation);
+          gyro.active = true;
+          gyroBtn.classList.add('active');
+          if (showNotification) showToast(I18N[currentLang].toastGyro);
+        }
+      })
+      .catch(err => {
+        console.log('Gyro permission denied or error:', err);
+      });
+  } else if ('DeviceOrientationEvent' in window) {
+    // Android / standard browsers
+    window.addEventListener('deviceorientation', handleOrientation);
+    gyro.active = true;
+    gyroBtn.classList.add('active');
+    if (showNotification) showToast(I18N[currentLang].toastGyro);
+  }
+}
+
+// Automatically prompt/enable on first touch gesture on mobile
+window.addEventListener('touchstart', () => {
+  if (!gyro.active) {
+    enableGyro(false);
+  }
+}, { once: true, passive: true });
+
+gyroBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  if (!gyro.active) {
+    enableGyro(true);
+  } else {
+    gyro.active = false;
+    gyro.hasData = false;
+    gyroBtn.classList.remove('active');
+    showToast(I18N[currentLang].toastGyroOff);
+  }
+  if (isAudioActive) playMelodyNote(783.99);
+});
+
+/* =========================================================
+   3. HIGH-PRECISION 3D FLOWER & BAMBOO CANVAS ENGINE
    ========================================================= */
 const canvas = document.getElementById('petals');
 const ctx = canvas.getContext('2d');
@@ -1324,14 +1409,35 @@ const particles = Array.from({ length: PARTICLE_COUNT }, () => new FallingPartic
 
 // Periodic gentle breeze gusts
 setInterval(() => {
-  ambientWind.targetX = 0.2 + (Math.random() - 0.45) * 1.2;
+  if (!gyro.active || !gyro.hasData) {
+    ambientWind.targetX = 0.2 + (Math.random() - 0.45) * 1.2;
+  }
 }, 5000);
 
 function animate() {
   ctx.clearRect(0, 0, W, H);
   const isNight = document.body.getAttribute('data-theme') === 'night';
 
-  ambientWind.x += (ambientWind.targetX - ambientWind.x) * 0.02;
+  // Apply Gyroscope Motion if active
+  if (gyro.hasData && gyro.active) {
+    gyro.gamma += (gyro.targetGamma - gyro.gamma) * 0.08;
+    gyro.beta += (gyro.targetBeta - gyro.beta) * 0.08;
+
+    // Wind direction dynamically driven by tilting phone left/right:
+    ambientWind.x += ((gyro.gamma / 30) * 1.8 - ambientWind.x) * 0.05;
+    // Fall speed affected by tilting phone forward/back:
+    ambientWind.y = Math.max(0.4, Math.min(1.8, 1.0 + (gyro.beta / 40) * 0.6));
+
+    // 3D parallax on envelope
+    if (!isLetterOpen) {
+      envelope3D.style.transform = `rotateY(${gyro.gamma * 0.45}deg) rotateX(${-gyro.beta * 0.4}deg) translateZ(10px)`;
+    }
+
+    // Parallax on ambient bloom
+    ambientBloom.style.transform = `translate(${gyro.gamma * 1.4}px, ${gyro.beta * 1.2}px)`;
+  } else {
+    ambientWind.x += (ambientWind.targetX - ambientWind.x) * 0.02;
+  }
 
   for (let i = particles.length - 1; i >= 0; i--) {
     const p = particles[i];
@@ -1372,7 +1478,7 @@ window.addEventListener('click', e => {
 });
 
 /* =========================================================
-   3. GENERATIVE WEB AUDIO ENGINE (ZERO EXTERNAL ASSETS)
+   4. GENERATIVE WEB AUDIO ENGINE (ZERO EXTERNAL ASSETS)
    ========================================================= */
 let audioCtx = null;
 let isAudioActive = false;
@@ -1496,7 +1602,7 @@ audioBtn.addEventListener('click', e => {
 });
 
 /* =========================================================
-   4. THEME TOGGLE (DAY & NIGHT CELESTIAL STYLES)
+   5. THEME TOGGLE (DAY & NIGHT CELESTIAL STYLES)
    ========================================================= */
 const themeBtn = document.getElementById('themeToggle');
 const themeIcon = document.getElementById('themeIcon');
@@ -1513,7 +1619,7 @@ themeBtn.addEventListener('click', e => {
 });
 
 /* =========================================================
-   5. LANGUAGE SWITCHER (EN / ZH)
+   6. LANGUAGE SWITCHER (EN / ZH)
    ========================================================= */
 const langBtn = document.getElementById('langToggle');
 
@@ -1527,7 +1633,7 @@ langBtn.addEventListener('click', e => {
 });
 
 /* =========================================================
-   6. ROTATING POETIC PHRASES (SMOOTH CROSS-FADE)
+   7. ROTATING POETIC PHRASES (SMOOTH CROSS-FADE)
    ========================================================= */
 let phraseIndex = 0;
 const topCard = document.getElementById('topCard');
@@ -1571,7 +1677,7 @@ function updatePhrases(immediate = false) {
 setInterval(() => updatePhrases(false), 5400);
 
 /* =========================================================
-   7. 3D ENVELOPE OPENING & LETTER MODAL CEREMONY
+   8. 3D ENVELOPE OPENING & LETTER MODAL CEREMONY
    ========================================================= */
 const envelopeScene = document.getElementById('envelopeScene');
 const envelope3D = document.getElementById('envelope3D');
@@ -1583,9 +1689,9 @@ const modalCloseBtn = document.getElementById('modalCloseBtn');
 
 let isLetterOpen = false;
 
-// 3D Parallax Tilt with Mouse Position
+// 3D Parallax Tilt with Mouse Position (Desktop fallback)
 window.addEventListener('mousemove', e => {
-  if (isLetterOpen) return;
+  if (isLetterOpen || (gyro.hasData && gyro.active)) return;
   const cx = window.innerWidth / 2;
   const cy = window.innerHeight / 2;
   const dx = (e.clientX - cx) / cx;
@@ -1647,7 +1753,7 @@ window.addEventListener('keydown', e => {
 });
 
 /* =========================================================
-   8. MODAL TABS NAVIGATION
+   9. MODAL TABS NAVIGATION
    ========================================================= */
 const tabButtons = document.querySelectorAll('.tab-btn');
 const tabPages = document.querySelectorAll('.tab-page');
@@ -1667,7 +1773,7 @@ tabButtons.forEach(btn => {
 });
 
 /* =========================================================
-   9. KEEPSAKE & QUOTE GENERATOR
+   10. KEEPSAKE & QUOTE GENERATOR
    ========================================================= */
 let keepsakeIdx = 0;
 const nextQuoteBtn = document.getElementById('nextQuoteBtn');
